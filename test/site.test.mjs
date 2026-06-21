@@ -8,6 +8,10 @@ test('a landing page preserva a proposta comercial da Observall', async () => {
   const html = await read('index.html');
 
   assert.match(html, /Cliente Oculto para[\s\S]*vender mais/i);
+  assert.match(html, /Correção rápida/i);
+  assert.match(html, /Relatórios em tempo real/i);
+  assert.match(html, /Quem é a[\s\S]*Observall/i);
+  assert.match(html, /Segmentos atendidos/i);
   assert.match(html, /Como funciona/i);
   assert.match(html, /Dashboard de Cliente Oculto/i);
   assert.match(html, /NPS com IA/i);
@@ -33,6 +37,8 @@ test('a página oferece estrutura semântica e responsiva', async () => {
   assert.match(html, /<footer[\s>]/);
   assert.match(html, /aria-label="Navegação principal"/);
   assert.match(html, /<details/);
+  assert.match(html, /id="sobre"/);
+  assert.match(html, /id="segmentos"/);
   assert.match(css, /@media\s*\(max-width:\s*760px\)/);
   assert.match(css, /:focus-visible/);
 });
@@ -42,6 +48,20 @@ test('não incorpora marca ou URLs da referência de terceiros', async () => {
 
   assert.doesNotMatch(source, /seuclienteoculto/i);
   assert.doesNotMatch(source, /Seu Cliente Oculto/);
+  assert.doesNotMatch(source, /se destacar da concorrência/i);
+  assert.doesNotMatch(source, /Conheça todos os resultados/i);
+  assert.doesNotMatch(source, /Mídia e parceiros/i);
+});
+
+test('não exibe métricas comerciais sem fonte no conteúdo da Observall', async () => {
+  const html = await read('index.html');
+
+  assert.doesNotMatch(html, /\+\s*12\s*mil/i);
+  assert.doesNotMatch(html, /\+\s*180\s*mil/i);
+  assert.doesNotMatch(html, /\+\s*450\b/i);
+  assert.doesNotMatch(html, /Avaliadores treinados/i);
+  assert.doesNotMatch(html, /Interações avaliadas/i);
+  assert.doesNotMatch(html, /Projetos e ciclos realizados/i);
 });
 
 test('a calculadora de ROI possui os campos e o comportamento-base', async () => {
@@ -61,6 +81,7 @@ test('usa a identidade visual fornecida e exibe carrossel de clientes', async ()
   assert.match(html, /public\/assets\/logo-observall\.png/);
   assert.match(html, /id="clientes"/);
   assert.match(html, /aria-label="Logos de clientes"/);
+  assert.ok(html.indexOf('id="clientes"') < html.indexOf('id="depoimentos"'));
 
   for (const logo of ['goldko', 'ultrabox', 'derela', 'bigbox', 'nativas', 'tecnotica', 'lojas-mel']) {
     assert.match(html, new RegExp(`public/assets/clients/${logo}\\.png`));
@@ -69,6 +90,31 @@ test('usa a identidade visual fornecida e exibe carrossel de clientes', async ()
   assert.match(css, /@keyframes\s+logo-marquee/);
   assert.match(css, /\.client-logo/);
   assert.match(js, /function moveClientCarousel/);
+});
+
+test('aproxima a sequÃªncia visual da referÃªncia sem trocar o header preto', async () => {
+  const [html, css] = await Promise.all([read('index.html'), read('styles.css')]);
+
+  const heroIndex = html.indexOf('class="hero"');
+  const proofIndex = html.indexOf('class="proof-strip"');
+  const clientsIndex = html.indexOf('id="clientes"');
+  const testimonialsIndex = html.indexOf('id="depoimentos"');
+  const aboutIndex = html.indexOf('id="sobre"');
+  const partnersIndex = html.indexOf('id="segmentos"');
+  const faqIndex = html.indexOf('id="faq"');
+
+  assert.ok(heroIndex < proofIndex);
+  assert.ok(proofIndex < clientsIndex);
+  assert.ok(clientsIndex < testimonialsIndex);
+  assert.ok(testimonialsIndex < aboutIndex);
+  assert.ok(aboutIndex < partnersIndex);
+  assert.ok(partnersIndex < faqIndex);
+
+  assert.match(css, /\.site-header\s*\{[^}]*background:\s*var\(--black\)/s);
+  assert.match(css, /\.faq-section\s*\{[^}]*background:\s*var\(--black\)/s);
+  assert.match(css, /\.proof-title/s);
+  assert.match(css, /\.about-section/s);
+  assert.match(css, /\.partners-section/s);
 });
 
 test('todas as imagens resolvem ao abrir index.html diretamente por file://', async () => {
@@ -107,6 +153,8 @@ test('o hero mantém a arte principal compacta e o conteúdo alinhado ao topo', 
   assert.match(css, /\.hero-grid\s*\{[^}]*align-items:\s*start/s);
   assert.match(css, /\.hero-image-shell\s*\{[^}]*width:\s*min\(100%,\s*400px\)/s);
   assert.match(css, /\.hero-visual\s*\{[^}]*min-height:\s*460px/s);
+  assert.match(css, /@media\s*\(max-width:\s*760px\)[\s\S]*?\.hero-visual\s*\{[^}]*display:\s*none/s);
+  assert.match(css, /@media\s*\(max-width:\s*760px\)[\s\S]*?\.hero-visual\s*\{[^}]*min-height:\s*0/s);
 });
 
 test('as demais imagens de conteúdo usam escala mais compacta', async () => {
@@ -150,9 +198,11 @@ test('os depoimentos seguem o padrão alternado da referência com logos dos cli
 });
 
 test('o rodapé inclui redes sociais e o WhatsApp flutuante solicitado', async () => {
-  const html = await read('index.html');
+  const [html, css] = await Promise.all([read('index.html'), read('styles.css')]);
 
   assert.match(html, /https:\/\/www\.instagram\.com\/observall/);
   assert.match(html, /https:\/\/www\.youtube\.com\/@Observall/);
   assert.match(html, /class="whatsapp-float"[\s\S]*?wa\.me\/5561999555580/);
+  assert.match(html, /class="whatsapp-icon"/);
+  assert.match(css, /\.whatsapp-float svg/);
 });

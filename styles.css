@@ -422,8 +422,9 @@ h3 {
 }
 
 .proof-strip {
-  color: var(--white);
-  background: var(--black);
+  color: var(--black);
+  background: var(--white);
+  border-bottom: 1px solid var(--line);
 }
 
 .proof-grid {
@@ -433,10 +434,12 @@ h3 {
 
 .proof-grid article {
   display: grid;
-  min-height: 126px;
-  padding: 30px 38px;
+  min-height: 220px;
+  padding: 38px 38px 34px;
   align-content: center;
-  border-right: 1px solid rgba(255, 255, 255, 0.16);
+  justify-items: center;
+  text-align: center;
+  border-right: 1px solid var(--line);
 }
 
 .proof-grid article:last-child {
@@ -445,13 +448,33 @@ h3 {
 
 .proof-grid strong {
   color: var(--green);
-  font-size: 1.15rem;
 }
 
-.proof-grid span {
-  margin-top: 2px;
-  color: rgba(255, 255, 255, 0.66);
-  font-size: 0.86rem;
+.proof-icon {
+  display: grid;
+  width: 64px;
+  height: 64px;
+  margin-bottom: 18px;
+  color: var(--green);
+  background: rgba(37, 214, 112, 0.08);
+  border: 1px solid rgba(37, 214, 112, 0.24);
+  border-radius: 14px;
+  font-size: 1.7rem;
+  place-items: center;
+}
+
+.proof-title {
+  color: var(--green);
+  font-size: clamp(1.55rem, 3vw, 2.15rem);
+  font-weight: 800;
+  line-height: 1.08;
+}
+
+.proof-grid article > span:not(.proof-icon) {
+  margin-top: 14px;
+  color: var(--muted);
+  font-size: 0.96rem;
+  font-weight: 700;
 }
 
 .split-layout,
@@ -577,12 +600,12 @@ h3 {
 
 .solution-card {
   position: relative;
-  min-height: 320px;
-  padding: 34px;
+  min-height: 300px;
+  padding: 32px;
   overflow: hidden;
   background: var(--white);
   border: 1px solid var(--line);
-  border-radius: var(--radius-md);
+  border-radius: 12px;
   transition: color 200ms ease, background 200ms ease, transform 200ms ease;
 }
 
@@ -632,10 +655,10 @@ h3 {
   display: grid;
   width: 54px;
   height: 54px;
-  margin-bottom: 48px;
+  margin-bottom: 42px;
   color: var(--white);
   background: var(--black);
-  border-radius: 15px;
+  border-radius: 12px;
   font-size: 1.4rem;
   place-items: center;
 }
@@ -649,7 +672,7 @@ h3 {
   position: absolute;
   z-index: 2;
   bottom: 28px;
-  left: 34px;
+  left: 32px;
   font-size: 0.82rem;
   font-weight: 700;
   text-decoration: none;
@@ -1406,6 +1429,13 @@ h3 {
   display: none;
 }
 
+.clients-cta {
+  display: flex;
+  width: fit-content;
+  margin: 42px auto 0;
+  padding-inline: 34px;
+}
+
 @keyframes logo-marquee {
   from {
     transform: translateX(0);
@@ -1414,6 +1444,111 @@ h3 {
   to {
     transform: translateX(-50%);
   }
+}
+
+.about-section {
+  background: var(--white);
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  align-items: center;
+  gap: clamp(44px, 7vw, 86px);
+}
+
+.about-copy p {
+  max-width: 620px;
+  color: var(--muted);
+}
+
+.about-panel {
+  display: grid;
+  gap: 0;
+  overflow: hidden;
+  background: var(--black);
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+}
+
+.about-panel article {
+  display: grid;
+  grid-template-columns: 58px 1fr;
+  gap: 18px;
+  padding: 30px 34px;
+  color: var(--white);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.about-panel article:last-child {
+  border-bottom: 0;
+}
+
+.about-panel span {
+  display: grid;
+  width: 44px;
+  height: 44px;
+  color: var(--black);
+  background: var(--green);
+  border-radius: 10px;
+  font-size: 0.8rem;
+  font-weight: 800;
+  place-items: center;
+}
+
+.about-panel strong,
+.about-panel p {
+  grid-column: 2;
+}
+
+.about-panel strong {
+  align-self: end;
+  font-size: 1.1rem;
+}
+
+.about-panel p {
+  margin: -8px 0 0;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.9rem;
+}
+
+.partners-section {
+  background: rgba(0, 0, 0, 0.035);
+}
+
+.partners-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  overflow: hidden;
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+}
+
+.partners-grid article {
+  display: grid;
+  min-height: 210px;
+  padding: 34px 28px;
+  color: var(--white);
+  background: var(--green);
+  align-content: center;
+  text-align: center;
+}
+
+.partners-grid article:nth-child(even) {
+  background: var(--black);
+}
+
+.partners-grid span {
+  margin-bottom: 18px;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.partners-grid strong {
+  font-size: 1.05rem;
+  line-height: 1.45;
 }
 
 .plans-grid {
@@ -1503,6 +1638,26 @@ h3 {
   gap: 90px;
 }
 
+.faq-section {
+  color: var(--white);
+  background: var(--black);
+}
+
+.faq-section h2,
+.faq-section summary {
+  color: var(--white);
+}
+
+.faq-section .eyebrow,
+.faq-section .faq-intro p,
+.faq-section .faq-list details p {
+  color: rgba(255, 255, 255, 0.62);
+}
+
+.faq-section .text-link {
+  color: var(--white);
+}
+
 .faq-intro {
   position: sticky;
   top: 120px;
@@ -1510,11 +1665,11 @@ h3 {
 
 .faq-list {
   display: grid;
-  border-top: 1px solid var(--line);
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
 }
 
 .faq-list details {
-  border-bottom: 1px solid var(--line);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.16);
 }
 
 .faq-list summary {
@@ -1523,7 +1678,7 @@ h3 {
   align-items: center;
   gap: 18px;
   padding: 22px 0;
-  color: var(--black);
+  color: inherit;
   font-weight: 700;
   list-style: none;
   cursor: pointer;
@@ -1552,7 +1707,7 @@ h3 {
 .faq-list details p {
   max-width: 760px;
   padding: 0 60px 24px 0;
-  color: var(--muted);
+  color: inherit;
 }
 
 .final-cta {
@@ -1659,6 +1814,12 @@ h3 {
   place-items: center;
 }
 
+.whatsapp-float svg {
+  width: 30px;
+  height: 30px;
+  fill: var(--white);
+}
+
 .reveal {
   transition: opacity 600ms ease, transform 600ms ease;
 }
@@ -1756,6 +1917,7 @@ h3 {
   .hero-grid,
   .split-layout,
   .platform-grid,
+  .about-grid,
   .nps-grid,
   .calculator-layout,
   .faq-layout {
@@ -1834,6 +1996,10 @@ h3 {
     grid-template-columns: 1fr;
   }
 
+  .partners-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   .carousel-controls {
     padding-bottom: 0;
   }
@@ -1889,7 +2055,7 @@ h3 {
 
   .hero {
     min-height: auto;
-    padding-bottom: 56px;
+    padding-bottom: 34px;
   }
 
   .hero-actions,
@@ -1903,11 +2069,14 @@ h3 {
   }
 
   .hero-visual {
-    min-height: 310px;
+    display: none;
+    min-height: 0;
   }
 
   .hero-stamp {
-    left: 2px;
+    left: 12px;
+    padding: 9px 12px;
+    font-size: 0.64rem;
   }
 
   .hero-orbit-two {
@@ -1927,6 +2096,7 @@ h3 {
   .process-grid,
   .testimonials-grid,
   .plans-grid,
+  .partners-grid,
   .mini-features,
   .field-grid {
     grid-template-columns: 1fr;
