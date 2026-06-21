@@ -1,0 +1,8 @@
+dist/
+node_modules/
+.codex/
+.agents/
+Imagens/
+.DS_Store
+Thumbs.db
+*.log
