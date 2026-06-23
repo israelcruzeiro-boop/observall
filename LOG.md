@@ -1,5 +1,61 @@
 # Log
 
+## 2026-06-22 — Reprodução do vídeo dentro do site
+
+- A capa do vídeo agora funciona como gatilho para carregar o player do YouTube no mesmo espaço da página.
+- Adicionado `video.js`, separado do `script.js` preservado da calculadora.
+- Em visualização por `file://`, o clique muda a mesma aba para o servidor local e solicita reprodução automática; em HTTP/HTTPS, o player abre imediatamente dentro da seção.
+- O build foi atualizado para incluir `video.js` em `dist/`.
+
+## 2026-06-22 — Correção do vídeo para abertura local
+
+- Removido o iframe do YouTube que apresentava `Erro 153` quando o site era aberto por `file://`.
+- Adicionada capa local do vídeo em `public/assets/video-observall-youtube.jpg`, com play central e link direto para o vídeo no YouTube.
+- A área agora funciona tanto na visualização local quanto após publicação, sem exibir erro de configuração do player.
+
+## 2026-06-22 — Restauração do título da área de insights
+
+- Restaurado o título `Transforme a experiência do cliente em crescimento real com nossos insights de Cliente Oculto` na primeira área após os indicadores.
+- Mantido o novo título principal do hero: `Cliente Oculto para supermercados que querem vender mais.`.
+
+## 2026-06-22 — Ajuste do título principal do hero
+
+- Título principal do hero revisado de `Observall para supermercados que querem vender mais com Cliente Oculto.` para `Cliente Oculto para supermercados que querem vender mais.`.
+- Objetivo: deixar a primeira promessa mais curta, natural e forte, sem perder foco em supermercados e Cliente Oculto.
+
+## 2026-06-22 — Ajustes de título, vídeo, logo transparente e imagens geradas
+
+- Melhorado o título da primeira área pós-insights para `Transforme cada visita em crescimento real`, mantendo o destaque verde no trecho principal.
+- Gerados e aplicados dois novos assets próprios para as áreas enviadas nos prints: `public/assets/insights-supermercado-observall.png` e `public/assets/plataforma-relatorios-observall.png`.
+- Logo transparente enviada pelo usuário salva como `public/assets/logo-observall-transparente.png` e aplicada no header/rodapé, sem recorte por `object-fit: cover`.
+- Área de vídeo substituída por embed real do YouTube: `https://www.youtube.com/embed/yuGAr_NQis8`.
+- Calculadora de ROI preservada; `script.js` segue idêntico ao snapshot congelado.
+- Validação: `npm.cmd run check` PASS, 15/15 testes, build PASS; smoke local desktop/mobile sem overflow horizontal, com imagem de insights, plataforma e iframe validados.
+- Produção, DNS e credenciais não foram acessados.
+
+## 2026-06-22 — Reconstrução menor e mais fiel à referência
+
+- Corrigido o rumo após feedback do usuário: a intenção era reconstruir do zero, área por área, com máxima fidelidade visual à referência, não apenas criar uma variação inspirada.
+- Mantido o congelamento do site anterior em `docs/snapshots/2026-06-22-site-atual/` como fonte de conteúdo e recuperação.
+- Auditadas áreas da referência em sequência: header, hero, métricas, bloco de valor, soluções, plataforma, clientes/prova social, depoimentos, sobre e FAQ.
+- Refeita a landing em versão menor e mais próxima da referência, substituindo laranja por verde Observall e mantendo títulos com palavra destacada.
+- Novo logo recebido pelo usuário salvo em `public/assets/logo-observall-novo.png` e aplicado no header/rodapé.
+- A calculadora de ROI foi preservada: mesmos campos/ids e `script.js` idêntico ao snapshot.
+- A seção de mídia/parceiros da referência não foi copiada por falta de prova equivalente da Observall; em seu lugar, foi mantida prova social com logos de clientes já existentes.
+- Validação: `npm.cmd run check` PASS, 14/14 testes, build PASS e smoke responsivo sem overflow horizontal.
+- Produção, DNS e credenciais não foram acessados.
+
+## 2026-06-22 — Reforma visual fiel por área com foco em supermercados
+
+- Congelado o estado anterior do site em `docs/snapshots/2026-06-22-site-atual/`, incluindo `index.html`, `styles.css`, `script.js`, `public/assets/` e captura do topo.
+- Auditada a referência `https://seuclienteoculto.com.br/` em navegador local para mapear ordem, ritmo visual, header branco, hero colorido, métricas, soluções, plataforma, cases, promessa/segurança e FAQ.
+- Reestruturada a landing da Observall com conteúdo próprio: hero para supermercados, insights provisórios com dados fictícios, soluções, dashboard, processo, clientes, promessa/segurança, ROI, depoimentos, sobre, foco em supermercados, FAQ e CTA.
+- Adicionados os assets `public/assets/hero-supermercado-observall.png` e `public/assets/auditoria-supermercado-observall.png`, gerados para uso próprio no segmento de supermercados.
+- Mantido `script.js` igual ao snapshot para preservar o comportamento da calculadora de ROI.
+- Atualizados testes para proteger a nova estrutura, impedir cópia de marca/textos/URLs da referência e validar os novos assets.
+- Validação final: `npm.cmd run check` PASS, build PASS, smoke desktop/mobile em `127.0.0.1:4173` sem overflow horizontal.
+- Produção, DNS e credenciais não foram acessados.
+
 ## 2026-06-19 — Fundação do novo site
 
 - Validado Codex Agent Kit: 32 wrappers Codex, 32 Claude e 3 skills coerentes.
