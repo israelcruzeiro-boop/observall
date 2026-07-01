@@ -144,3 +144,13 @@
 - WhatsApp flutuante atualizado para `+55 61 99955-5580`.
 - Mobile: depoimentos em uma coluna de 362 px, rodapé em duas colunas e zero overflow.
 - Validação final: 15/15 testes, build PASS e `dist/` atualizado.
+
+## 2026-07-01 — Substituição das imagens principais
+
+- `Observall - Imagem Hero Section.png` aplicado no hero.
+- `Observall img001.png` aplicado na área "Transforme a experiência do cliente...".
+- `Observall img002.png` aplicado na área "Acesse relatórios em tempo real...".
+- Metadados `width`/`height` e textos alternativos atualizados para as novas imagens 1672 × 941.
+- Enquadramento do hero ajustado para preservar a imagem panorâmica sem cortes laterais.
+- Mobile: H1 e botões compactados e tarja decorativa da hero ocultada para evitar corte visual.
+- Validação final: 16/16 testes, build PASS e smoke desktop/mobile via Chrome CDP sem overflow.

@@ -250,14 +250,14 @@ h3 {
 
 .hero-grid {
   display: grid;
-  grid-template-columns: 1.07fr 0.93fr;
-  align-items: end;
-  min-height: 540px;
+  grid-template-columns: minmax(0, 0.94fr) minmax(0, 1.06fr);
+  align-items: center;
+  min-height: 590px;
   gap: 48px;
 }
 
 .hero-copy {
-  padding: 74px 0 66px;
+  padding: 74px 0;
 }
 
 .hero-copy p {
@@ -287,31 +287,31 @@ h3 {
 .hero-visual {
   position: relative;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: center;
   min-height: 540px;
 }
 
 .hero-visual img {
-  width: 100%;
-  max-width: 520px;
-  height: 470px;
-  object-fit: cover;
-  object-position: center;
+  width: min(100%, 640px);
+  max-width: 640px;
+  height: auto;
+  object-fit: contain;
   border-radius: 0;
+  filter: drop-shadow(0 26px 34px rgba(0, 0, 0, 0.18));
 }
 
 .hero-visual span {
   position: absolute;
-  top: 155px;
-  left: 50%;
+  top: 68px;
+  right: 0;
   padding: 10px 18px;
   color: var(--black);
   background: var(--white);
   box-shadow: 0 10px 24px rgba(0, 0, 0, 0.16);
   font-size: 0.85rem;
   font-weight: 700;
-  transform: translateX(-20%) rotate(-4deg);
+  transform: rotate(-4deg);
 }
 
 .metrics-strip {
@@ -1074,12 +1074,13 @@ h3 {
   }
 
   .hero-visual {
-    min-height: 360px;
+    min-height: auto;
+    padding-bottom: 38px;
   }
 
   .hero-visual img {
-    max-width: none;
-    height: 360px;
+    width: 100%;
+    max-width: 680px;
   }
 
   .metrics-grid {
@@ -1114,7 +1115,8 @@ h3 {
   }
 
   h1 {
-    font-size: 2.28rem;
+    font-size: 2rem;
+    line-height: 1.18;
   }
 
   h2 {
@@ -1134,11 +1136,13 @@ h3 {
   .form-actions .button {
     width: 100%;
     min-width: 0;
+    padding-right: 16px;
+    padding-left: 16px;
+    font-size: 0.92rem;
   }
 
   .hero-visual span {
-    top: 38px;
-    transform: translateX(-50%) rotate(-4deg);
+    display: none;
   }
 
   .solutions-grid,
