@@ -176,8 +176,12 @@ test('os depoimentos seguem o bloco alternado da referência', async () => {
   assert.match(html, /Bruna Reges/);
   assert.match(html, /Marcus/);
   assert.match(html, /Márcia Matos/);
+  assert.match(html, /class="testimonial-logo" src="public\/assets\/clients\/bigbox-ultrabox\.png" alt="BigBox e Ultrabox"/);
+  assert.match(html, /class="testimonial-logo" src="public\/assets\/clients\/nativas\.png" alt="Nativas"/);
+  assert.match(html, /class="testimonial-logo" src="public\/assets\/clients\/tecnotica\.png" alt="Tecnótica"/);
   assert.match(css, /\.testimonials-section\s*\{[^}]*grid-template-columns:\s*repeat\(3,\s*1fr\)/s);
   assert.match(css, /\.testimonial-card\.featured\s*\{[^}]*background:\s*#181a17/s);
+  assert.match(css, /\.testimonial-logo\s*\{[^}]*border-radius:\s*50%/s);
 });
 
 test('todas as imagens referenciadas resolvem localmente', async () => {

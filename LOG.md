@@ -154,3 +154,11 @@
 - Enquadramento do hero ajustado para preservar a imagem panorâmica sem cortes laterais.
 - Mobile: H1 e botões compactados e tarja decorativa da hero ocultada para evitar corte visual.
 - Validação final: 16/16 testes, build PASS e smoke desktop/mobile via Chrome CDP sem overflow.
+
+## 2026-07-01 — Logos circulares nos depoimentos
+
+- Adicionado asset local `public/assets/clients/bigbox-ultrabox.png` a partir da imagem enviada para BigBox e Ultrabox.
+- Depoimentos agora exibem logos circulares para BigBox/Ultrabox, Nativas e Tecnótica.
+- CSS `.testimonial-logo` criado com círculo branco, `border-radius: 50%`, sombra e `object-fit: contain`.
+- Teste de regressão atualizado para exigir os três logos e o formato circular.
+- Validação final: 16/16 testes, build PASS e smoke desktop/mobile dos depoimentos sem overflow.

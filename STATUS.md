@@ -13,6 +13,7 @@
 - [x] Títulos com palavra de destaque em verde preservados como padrão visual.
 - [x] Duas novas imagens geradas para as áreas de insights/crescimento e relatórios em tempo real.
 - [x] Imagens anexadas pelo usuário aplicadas no hero, na área "Transforme a experiência..." e na área "Acesse relatórios em tempo real...".
+- [x] Logos circulares aplicados nos depoimentos de BigBox/Ultrabox, Nativas e Tecnótica.
 - [x] Vídeo informado pelo usuário reproduzido dentro da área "Quem é a Observall?" quando servido por HTTP/HTTPS, com transição local de `file://` para o servidor de desenvolvimento na mesma aba.
 - [x] Calculadora de ROI preservada com mesmos campos, ids e `script.js` idêntico ao snapshot.
 - [x] `npm.cmd run check` verde e `dist/` gerado.
@@ -26,7 +27,7 @@
 ## Ambiente web
 
 **Progresso:** versão local pronta; `dist/` gerado.  
-**Validação:** 16/16 testes; build PASS; smoke desktop/mobile via Chrome CDP PASS; imagens 1672x941 carregam no hero, valor e plataforma; calculadora preservada; produção não acessada.
+**Validação:** 16/16 testes; build PASS; smoke desktop/mobile via Chrome CDP PASS; imagens 1672x941 carregam no hero, valor e plataforma; logos circulares carregam nos depoimentos; calculadora preservada.
 **Produção:** não alterada.
 
 ## Próximo passo
