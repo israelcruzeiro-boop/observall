@@ -1,7 +1,7 @@
 # Status
 
 **Fase:** REFORMA VISUAL LOCAL / aguardando aprovação editorial
-**Atualizado em:** 2026-07-01
+**Atualizado em:** 2026-07-02
 
 ## Estado geral
 
@@ -14,6 +14,7 @@
 - [x] Duas novas imagens geradas para as áreas de insights/crescimento e relatórios em tempo real.
 - [x] Imagens anexadas pelo usuário aplicadas no hero, na área "Transforme a experiência..." e na área "Acesse relatórios em tempo real...".
 - [x] Logos circulares aplicados nos depoimentos de BigBox/Ultrabox, Nativas e Tecnótica.
+- [x] Chamada da área de clientes ajustada para "Eles já confiam em nós".
 - [x] Vídeo informado pelo usuário reproduzido dentro da área "Quem é a Observall?" quando servido por HTTP/HTTPS, com transição local de `file://` para o servidor de desenvolvimento na mesma aba.
 - [x] Calculadora de ROI preservada com mesmos campos, ids e `script.js` idêntico ao snapshot.
 - [x] `npm.cmd run check` verde e `dist/` gerado.

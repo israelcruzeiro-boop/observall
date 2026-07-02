@@ -159,6 +159,7 @@ test('exibe carrossel de clientes da Observall', async () => {
   const [html, css, js] = await Promise.all([read('index.html'), read('styles.css'), read('script.js')]);
 
   assert.match(html, /id="clientes"/);
+  assert.match(html, /Eles já <span>confiam em nós<\/span>/);
   assert.match(html, /aria-label="Logos de clientes"/);
 
   for (const logo of ['goldko', 'ultrabox', 'derela', 'bigbox', 'nativas', 'tecnotica', 'lojas-mel']) {

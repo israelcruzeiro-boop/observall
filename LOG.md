@@ -162,3 +162,9 @@
 - CSS `.testimonial-logo` criado com círculo branco, `border-radius: 50%`, sombra e `object-fit: contain`.
 - Teste de regressão atualizado para exigir os três logos e o formato circular.
 - Validação final: 16/16 testes, build PASS e smoke desktop/mobile dos depoimentos sem overflow.
+
+## 2026-07-02 — Ajuste de chamada da prova social
+
+- Título da área de clientes alterado de "Resultados construídos ao lado dos nossos clientes" para "Eles já confiam em nós".
+- Destaque verde preservado em "confiam em nós".
+- Teste de contrato atualizado para proteger a nova chamada.
