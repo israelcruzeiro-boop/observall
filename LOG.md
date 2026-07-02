@@ -168,3 +168,11 @@
 - Título da área de clientes alterado de "Resultados construídos ao lado dos nossos clientes" para "Eles já confiam em nós".
 - Destaque verde preservado em "confiam em nós".
 - Teste de contrato atualizado para proteger a nova chamada.
+
+## 2026-07-02 — Métricas reais nos insights
+
+- Faixa de insights atualizada para `+22 mil` itens auditados em loja.
+- Métrica de redução atualizada para `-69,6%` nas falhas em um item-chave.
+- Métrica de oportunidades atualizada para `+3 mil` oportunidades de melhoria identificadas.
+- Removido texto de dado fictício da seção.
+- Teste de contrato atualizado para exigir as novas métricas.

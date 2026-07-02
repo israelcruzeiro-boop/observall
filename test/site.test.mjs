@@ -114,7 +114,13 @@ test('mantém proteção contra métricas comerciais sem fonte da referência', 
   assert.doesNotMatch(html, /\+\s*10\s*milhões/i);
   assert.doesNotMatch(html, /\+\s*4444\b/i);
   assert.doesNotMatch(html, /\+\s*5000\b/i);
-  assert.match(html, /Dado fictício até Gabriel enviar os insights/i);
+  assert.doesNotMatch(html, /Dado fictício até Gabriel enviar os insights/i);
+  assert.match(html, /\+22 mil/);
+  assert.match(html, /Itens auditados em loja/);
+  assert.match(html, /-69,6%/);
+  assert.match(html, /Falhas em um item-chave/);
+  assert.match(html, /\+3 mil/);
+  assert.match(html, /Oportunidades de melhoria identificadas/);
 });
 
 test('a identidade troca o laranja da referência por verde sem introduzir laranja no CSS', async () => {

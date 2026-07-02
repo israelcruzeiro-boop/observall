@@ -15,11 +15,11 @@
 - [x] Imagens anexadas pelo usuário aplicadas no hero, na área "Transforme a experiência..." e na área "Acesse relatórios em tempo real...".
 - [x] Logos circulares aplicados nos depoimentos de BigBox/Ultrabox, Nativas e Tecnótica.
 - [x] Chamada da área de clientes ajustada para "Eles já confiam em nós".
+- [x] Métricas reais dos insights aplicadas: +22 mil itens auditados, -69,6% em falhas de item-chave e +3 mil oportunidades.
 - [x] Vídeo informado pelo usuário reproduzido dentro da área "Quem é a Observall?" quando servido por HTTP/HTTPS, com transição local de `file://` para o servidor de desenvolvimento na mesma aba.
 - [x] Calculadora de ROI preservada com mesmos campos, ids e `script.js` idêntico ao snapshot.
 - [x] `npm.cmd run check` verde e `dist/` gerado.
 - [x] Smoke responsivo local em desktop/mobile sem overflow horizontal.
-- [ ] Substituir métricas fictícias pelos dados reais do Gabriel.
 - [ ] Aprovação visual e editorial do usuário.
 - [ ] Deploy em HostGator.
 - [ ] Corte de DNS no Registro.br.
@@ -28,9 +28,9 @@
 ## Ambiente web
 
 **Progresso:** versão local pronta; `dist/` gerado.  
-**Validação:** 16/16 testes; build PASS; smoke desktop/mobile via Chrome CDP PASS; imagens 1672x941 carregam no hero, valor e plataforma; logos circulares carregam nos depoimentos; calculadora preservada.
+**Validação:** 16/16 testes; build PASS; smoke desktop/mobile via Chrome CDP PASS; imagens 1672x941 carregam no hero, valor e plataforma; logos circulares carregam nos depoimentos; métricas reais dos insights renderizam; calculadora preservada.
 **Produção:** não alterada.
 
 ## Próximo passo
 
-Revisar visualmente a versão local, substituir os dados fictícios da faixa de insights pelos números reais do Gabriel e só então preparar deploy mediante confirmação explícita.
+Revisar visualmente a versão local e preparar deploy mediante confirmação explícita.
