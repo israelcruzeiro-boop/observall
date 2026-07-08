@@ -316,39 +316,83 @@
 
       <section class="section results-section" id="resultados" aria-labelledby="results-title">
         <div class="container">
-          <div class="section-heading reveal">
-            <h2 id="results-title">Simule o potencial de <span>ganho da sua operação</span></h2>
-            <p>Esta é a calculadora atual da Observall, preservada sem alteração de comportamento.</p>
+          <div class="section-heading roi-heading reveal">
+            <h2 id="results-title">Descubra em quantos meses a Observall pode <span>se pagar na sua operação</span></h2>
+            <p id="roi-subtitle">Simule o impacto financeiro de melhorar padrão de loja, experiência do cliente, atendimento, exposição e execução operacional.</p>
           </div>
 
-          <div class="calculator-layout">
-            <form class="roi-form reveal" id="roi-form">
-              <div class="form-heading"><span>Simulador</span><h3>Preencha seu cenário</h3><p>Veja uma projeção simples do potencial mensal.</p></div>
-              <div class="field-grid">
-                <label>Número de lojas<input id="stores" name="stores" type="number" value="12" min="1" step="1" inputmode="numeric" /></label>
-                <label>Clientes por loja / mês<input id="customers" name="customers" type="number" value="1000" min="0" step="1" inputmode="numeric" /></label>
-                <label>% que compram hoje<input id="currentRate" name="currentRate" type="number" value="25" min="0" max="100" step="0.1" inputmode="decimal" /></label>
-                <label>% que compram depois<input id="futureRate" name="futureRate" type="number" value="28" min="0" max="100" step="0.1" inputmode="decimal" /></label>
-                <label>Ticket médio (R$)<input id="ticket" name="ticket" type="number" value="80" min="0" step="0.01" inputmode="decimal" /></label>
-                <label>Investimento mensal (R$)<input id="investment" name="investment" type="number" placeholder="Opcional" min="0" step="0.01" inputmode="decimal" /></label>
+          <div class="calculator-layout reveal" data-roi-state="form">
+            <form class="roi-form" id="roi-form">
+              <div class="form-heading"><span>Simulador de ROI</span><h3 id="roi-form-title">Preencha os dados da sua operação</h3><p>Veja o potencial estimado de ganho e em quanto tempo o investimento pode se pagar.</p></div>
+              <div class="field-grid roi-fields">
+                <label><span class="field-icon" aria-hidden="true">L</span><span>Quantidade de lojas</span><input id="stores" name="stores" type="text" value="12" inputmode="numeric" autocomplete="off" /></label>
+                <label><span class="field-icon" aria-hidden="true">C</span><span>Cupons por mês</span><input id="coupons" name="coupons" type="text" value="12.000" inputmode="numeric" autocomplete="off" /></label>
+                <label><span class="field-icon" aria-hidden="true">T</span><span>Ticket médio atual</span><input id="ticket" name="ticket" type="text" value="R$ 80" inputmode="decimal" autocomplete="off" /></label>
+                <label><span class="field-icon" aria-hidden="true">%</span><span>Margem de lucro média</span><input id="margin" name="margin" type="text" value="20%" inputmode="decimal" autocomplete="off" /></label>
+                <label><span class="field-icon" aria-hidden="true">V</span><span>Visitas ocultas por loja / mês</span><input id="visits" name="visits" type="text" value="1" inputmode="numeric" autocomplete="off" /></label>
               </div>
-              <div class="form-actions"><button class="button button-primary" type="submit">Calcular</button><button class="button button-ghost" type="reset">Limpar</button></div>
+              <p class="roi-note"><span aria-hidden="true">i</span> A simulação considera um potencial estimado de <strong>+10%</strong> em cupons por mês e <strong>+12%</strong> em ticket médio.</p>
+              <div class="form-actions"><button class="button button-primary" id="roi-primary-action" type="submit">Calcular meu potencial de ganho</button><button class="button button-ghost" id="roi-example" type="button">Ver exemplo</button></div>
               <p class="form-error" id="form-error" role="alert" hidden></p>
             </form>
 
-            <aside class="roi-output reveal" aria-live="polite">
-              <span class="output-kicker">Projeção mensal</span>
-              <div class="output-main"><span>Receita extra estimada</span><strong id="extra-revenue">—</strong></div>
-              <div class="output-grid">
-                <div><span>Vendas extras</span><strong id="extra-sales">—</strong></div>
-                <div><span>ROI mensal</span><strong id="roi-value">—</strong></div>
-                <div><span>Tempo de retorno</span><strong id="payback-value">—</strong></div>
+            <aside class="roi-output" aria-live="polite">
+              <span class="output-kicker" id="roi-output-kicker">O que você vai descobrir</span>
+              <h3 id="roi-output-title">Quanto dinheiro sua operação pode estar deixando na mesa</h3>
+              <div class="roi-preview-list" id="roi-preview-list">
+                <div><span class="result-icon" aria-hidden="true">$</span><strong>Receita extra estimada por mês</strong></div>
+                <div><span class="result-icon" aria-hidden="true">%</span><strong>Lucro incremental mensal</strong></div>
+                <div><span class="result-icon" aria-hidden="true">P</span><strong>Payback do investimento</strong></div>
+                <div><span class="result-icon" aria-hidden="true">R</span><strong>ROI anual estimado</strong></div>
               </div>
-              <p>Fórmula: lojas × clientes × diferença entre taxas × ticket. Resultados variam por segmento, região e maturidade da operação.</p>
+              <div class="roi-result-panel" id="roi-result-panel" hidden>
+                <div class="result-highlight"><span class="result-icon" aria-hidden="true">P</span><strong id="payback-value">Payback estimado: —</strong></div>
+                <div class="result-row"><span><span class="result-icon" aria-hidden="true">$</span>Receita extra estimada / mês</span><strong id="extra-revenue">—</strong></div>
+                <div class="result-row"><span><span class="result-icon" aria-hidden="true">%</span>Lucro incremental / mês</span><strong id="incremental-profit">—</strong></div>
+                <div class="result-row"><span><span class="result-icon" aria-hidden="true">I</span>Investimento Observall / mês</span><strong id="monthly-investment">—</strong></div>
+                <div class="result-row"><span><span class="result-icon" aria-hidden="true">R</span>ROI anual estimado</span><strong id="roi-value">—</strong></div>
+                <div class="result-row"><span><span class="result-icon" aria-hidden="true">G</span>Ganho líquido anual estimado</span><strong id="annual-net-gain">—</strong></div>
+              </div>
+              <p id="roi-commercial-copy">Pequenas falhas em atendimento, fila, ruptura, exposição e padrão de loja derrubam venda todos os dias. A Observall ajuda a transformar essas perdas invisíveis em plano de ação e resultado.</p>
+              <blockquote id="roi-impact-quote">A Observall não entra como custo. <strong>Entra como mecanismo para recuperar lucro perdido na operação.</strong></blockquote>
+              <div class="roi-result-actions" id="roi-result-actions" hidden>
+                <a class="button button-primary" id="roi-whatsapp-primary" href="https://wa.me/5561993715292?text=Ol%C3%A1%2C%20fiz%20a%20simula%C3%A7%C3%A3o%20de%20ROI%20no%20site%20da%20Observall%20e%20quero%20validar%20os%20n%C3%BAmeros%20da%20minha%20opera%C3%A7%C3%A3o%20com%20um%20especialista." target="_blank" rel="noopener noreferrer">Quero validar esse ROI com a Observall</a>
+                <a class="button button-light" href="https://wa.me/5561993715292?text=Ol%C3%A1%2C%20quero%20falar%20com%20um%20especialista%20da%20Observall." target="_blank" rel="noopener noreferrer">Falar com especialista</a>
+              </div>
             </aside>
           </div>
         </div>
       </section>
+
+      <div class="lead-modal" id="lead-modal" role="dialog" aria-modal="true" aria-labelledby="lead-modal-title" hidden>
+        <div class="lead-modal__backdrop" data-modal-close></div>
+        <form class="lead-modal__card" id="lead-form">
+          <button class="lead-modal__close" type="button" data-modal-close aria-label="Fechar">×</button>
+          <div class="lead-modal__main">
+            <span class="output-kicker">Simulação pronta</span>
+            <h2 id="lead-modal-title">Seu resultado está pronto</h2>
+            <p>Preencha seus dados para visualizar a simulação completa e receber uma análise personalizada da sua operação.</p>
+            <div class="lead-field-grid">
+              <label>Nome<input id="lead-name" name="name" type="text" placeholder="Digite seu nome completo" autocomplete="name" required /></label>
+              <label>Empresa<input id="lead-company" name="company" type="text" placeholder="Digite o nome da sua empresa" autocomplete="organization" required /></label>
+              <label>WhatsApp<input id="lead-whatsapp" name="whatsapp" type="tel" placeholder="(11) 99999-9999" autocomplete="tel" required /></label>
+              <label>E-mail<input id="lead-email" name="email" type="email" placeholder="seu.email@empresa.com.br" autocomplete="email" required /></label>
+            </div>
+            <p class="lead-privacy"><span aria-hidden="true">▣</span> Seus dados serão usados apenas para enviar sua simulação e permitir nosso contato consultivo.</p>
+            <p class="form-error" id="lead-error" role="alert" hidden></p>
+            <button class="button button-primary" type="submit">Ver meu resultado</button>
+            <button class="button button-ghost lead-back" type="button" data-modal-close>Voltar</button>
+            <small>Ao continuar, você concorda em receber sua simulação e contato da equipe Observall.</small>
+          </div>
+          <div class="lead-modal__aside" aria-label="O que você vai desbloquear">
+            <h3>O que você vai desbloquear</h3>
+            <div><span class="field-icon" aria-hidden="true">P</span><strong>Payback estimado</strong><small>do investimento</small></div>
+            <div><span class="field-icon" aria-hidden="true">$</span><strong>Receita extra</strong><small>estimada por mês</small></div>
+            <div><span class="field-icon" aria-hidden="true">%</span><strong>Lucro incremental</strong><small>mensal</small></div>
+            <div><span class="field-icon" aria-hidden="true">R</span><strong>ROI anual</strong><small>estimado</small></div>
+          </div>
+        </form>
+      </div>
 
       <section class="section faq-section" id="faq" aria-labelledby="faq-title">
         <div class="container">

@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
-import { access, readFile } from 'node:fs/promises';
+import { spawn } from 'node:child_process';
+import { access, readFile, rm } from 'node:fs/promises';
 import test from 'node:test';
 
 const read = (file) => readFile(new URL(`../${file}`, import.meta.url), 'utf8');
@@ -88,21 +89,105 @@ test('o build inclui o controlador dedicado do vídeo', async () => {
   assert.match(build, /'video\.js'/);
 });
 
-test('mantém a calculadora de ROI com os mesmos campos e script preservado', async () => {
-  const [html, js, snapshotJs] = await Promise.all([
-    read('index.html'),
-    read('script.js'),
-    read('docs/snapshots/2026-06-22-site-atual/script.js'),
-  ]);
+test('implementa a nova calculadora de ROI com captura de lead antes do resultado', async () => {
+  const [html, js] = await Promise.all([read('index.html'), read('script.js')]);
 
-  for (const id of ['stores', 'customers', 'currentRate', 'futureRate', 'ticket', 'investment']) {
+  for (const id of ['stores', 'coupons', 'ticket', 'margin', 'visits']) {
     assert.match(html, new RegExp(`id="${id}"`));
   }
 
-  assert.match(html, /class="calculator-layout"/);
-  assert.match(html, /class="roi-form reveal" id="roi-form"/);
-  assert.match(html, /Fórmula: lojas × clientes × diferença entre taxas × ticket/);
-  assert.equal(js, snapshotJs);
+  for (const id of ['lead-name', 'lead-company', 'lead-whatsapp', 'lead-email']) {
+    assert.match(html, new RegExp(`id="${id}"`));
+  }
+
+  assert.match(html, /class="calculator-layout reveal"/);
+  assert.match(html, /id="lead-modal"/);
+  assert.match(html, /Calcular meu potencial de ganho/);
+  assert.match(html, /Ver meu resultado/);
+  assert.match(js, /observallVisitPrice:\s*300/);
+  assert.match(js, /couponGrowth:\s*0\.1/);
+  assert.match(js, /ticketGrowth:\s*0\.12/);
+  assert.match(js, /\/api\/lead-capture/);
+  assert.match(js, /lead-capture\.php/);
+  assert.match(js, /Preencha todos os campos para calcular seu potencial de ganho/);
+});
+
+test('o endpoint local de leads grava uma linha JSONL pela rota Vercel', async () => {
+  const port = 45000 + Math.floor(Math.random() * 1000);
+  const cwd = new URL('../', import.meta.url);
+  const leadFile = new URL('../storage/roi-leads.jsonl', import.meta.url);
+  await rm(leadFile, { force: true });
+
+  const server = spawn(process.execPath, ['scripts/serve.mjs'], {
+    cwd,
+    env: { ...process.env, PORT: String(port) },
+    stdio: ['ignore', 'pipe', 'pipe'],
+  });
+
+  await new Promise((resolve, reject) => {
+    const timer = setTimeout(() => reject(new Error('servidor local não iniciou a tempo')), 7000);
+    server.stdout.on('data', (chunk) => {
+      if (String(chunk).includes(`http://127.0.0.1:${port}`)) {
+        clearTimeout(timer);
+        resolve();
+      }
+    });
+    server.once('error', reject);
+    server.once('exit', (code) => {
+      if (code !== null) reject(new Error(`servidor local encerrou com código ${code}`));
+    });
+  });
+
+  try {
+    const response = await fetch(`http://127.0.0.1:${port}/api/lead-capture`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        lead: {
+          nome: 'Lead Teste',
+          empresa: 'Empresa Teste',
+          whatsapp: '+55 61 99999-9999',
+          email: 'lead@example.com',
+        },
+        simulation: {
+          quantidadeDeLojas: 12,
+          receitaExtraMensal: 222720,
+          roiAnual: 1137.3333333333333,
+        },
+      }),
+    });
+
+    assert.equal(response.status, 200);
+    assert.deepEqual(await response.json(), { ok: true });
+
+    const lines = (await readFile(leadFile, 'utf8')).trim().split('\n');
+    const saved = JSON.parse(lines.at(-1));
+    assert.equal(saved.lead.nome, 'Lead Teste');
+    assert.equal(saved.simulation.receitaExtraMensal, 222720);
+    assert.equal(saved.source, 'observall-site-roi');
+  } finally {
+    server.kill();
+    await rm(leadFile, { force: true });
+  }
+});
+
+test('o build inclui endpoint PHP e proteção do arquivo de leads', async () => {
+  const [build, php, api, htaccess, gitignore] = await Promise.all([
+    read('scripts/build.mjs'),
+    read('lead-capture.php'),
+    read('api/lead-capture.js'),
+    read('storage/.htaccess'),
+    read('.gitignore'),
+  ]);
+
+  assert.match(build, /lead-capture\.php/);
+  assert.match(build, /storage\/\.htaccess/);
+  assert.match(php, /roi-leads\.jsonl/);
+  assert.match(php, /LOCK_EX/);
+  assert.match(api, /tmpdir\(\)/);
+  assert.match(api, /roi-leads\.jsonl/);
+  assert.match(htaccess, /Require all denied/);
+  assert.match(gitignore, /storage\/\*\.jsonl/);
 });
 
 test('mantém proteção contra métricas comerciais sem fonte da referência', async () => {

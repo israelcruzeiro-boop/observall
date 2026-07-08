@@ -1,7 +1,7 @@
 # Status
 
 **Fase:** REFORMA VISUAL LOCAL / aguardando aprovação editorial
-**Atualizado em:** 2026-07-02
+**Atualizado em:** 2026-07-08
 
 ## Estado geral
 
@@ -17,7 +17,9 @@
 - [x] Chamada da área de clientes ajustada para "Eles já confiam em nós".
 - [x] Métricas reais dos insights aplicadas: +22 mil itens auditados, -69,6% em falhas de item-chave e +3 mil oportunidades.
 - [x] Vídeo informado pelo usuário reproduzido dentro da área "Quem é a Observall?" quando servido por HTTP/HTTPS, com transição local de `file://` para o servidor de desenvolvimento na mesma aba.
-- [x] Calculadora de ROI preservada com mesmos campos, ids e `script.js` idêntico ao snapshot.
+- [x] Calculadora de ROI atualizada conforme mockups e PDF: campos por cupons/ticket/margem/visitas, modal de lead antes do resultado e tela de payback/ROI anual.
+- [x] Ajuste visual da calculadora revisado: escala desktop ampliada, painel direito sem duplicação de estados e modal de lead em duas colunas conforme mockup.
+- [x] Captura inicial de leads preparada em arquivo: `lead-capture.php` grava em `storage/roi-leads.jsonl`, com `.htaccess` bloqueando leitura direta e servidor local simulando o mesmo endpoint.
 - [x] `npm.cmd run check` verde e `dist/` gerado.
 - [x] Smoke responsivo local em desktop/mobile sem overflow horizontal.
 - [ ] Aprovação visual e editorial do usuário.
@@ -28,7 +30,7 @@
 ## Ambiente web
 
 **Progresso:** versão local pronta; `dist/` gerado.  
-**Validação:** 16/16 testes; build PASS; smoke desktop/mobile via Chrome CDP PASS; imagens 1672x941 carregam no hero, valor e plataforma; logos circulares carregam nos depoimentos; métricas reais dos insights renderizam; calculadora preservada.
+**Validação:** 18/18 testes; build PASS; smoke desktop via inspeção de layout da calculadora; imagens 1672x941 carregam no hero, valor e plataforma; logos circulares carregam nos depoimentos; métricas reais dos insights renderizam; calculadora de ROI captura lead local e exibe resultado esperado do exemplo.
 **Produção:** não alterada.
 
 ## Próximo passo
