@@ -37,6 +37,14 @@
 - Bloqueio: CLI Vercel instalada, mas sem `.vercel/project.json`, sem `VERCEL_TOKEN` e sem sessão local detectável. Deploy externo não executado para evitar publicação no escopo/projeto errado.
 - Observação técnica: gravação em arquivo na Vercel via serverless usa filesystem temporário (`/tmp`) e não é persistente. Leads reais precisam de destino durável como Vercel Blob/KV, Supabase, Sheets/Airtable ou banco.
 
+## 2026-07-08 — Correção do modal e exportação de leads na Vercel
+
+- Modal de captura compactado com `max-height`, scroll interno e campos menores para caber no viewport real do Chrome sem exigir zoom.
+- Adicionado `@vercel/blob` e gravação persistente opcional em Blob privado quando a Vercel tiver Blob Store conectado ao projeto.
+- Adicionada rota protegida `api/leads-export.js` para exportar leads em JSON ou CSV usando `ROI_LEADS_TOKEN`.
+- Mantido fallback temporário em `/tmp` apenas para não bloquear a visualização do resultado quando Blob ainda não estiver configurado.
+- Validação: `npm.cmd run check` PASS, 18/18 testes e build PASS.
+
 ## 2026-06-22 — Reprodução do vídeo dentro do site
 
 - A capa do vídeo agora funciona como gatilho para carregar o player do YouTube no mesmo espaço da página.

@@ -172,20 +172,27 @@ test('o endpoint local de leads grava uma linha JSONL pela rota Vercel', async (
 });
 
 test('o build inclui endpoint PHP e proteção do arquivo de leads', async () => {
-  const [build, php, api, htaccess, gitignore] = await Promise.all([
+  const [build, php, api, exportApi, htaccess, gitignore, packageJson] = await Promise.all([
     read('scripts/build.mjs'),
     read('lead-capture.php'),
     read('api/lead-capture.js'),
+    read('api/leads-export.js'),
     read('storage/.htaccess'),
     read('.gitignore'),
+    read('package.json'),
   ]);
 
   assert.match(build, /lead-capture\.php/);
   assert.match(build, /storage\/\.htaccess/);
   assert.match(php, /roi-leads\.jsonl/);
   assert.match(php, /LOCK_EX/);
-  assert.match(api, /tmpdir\(\)/);
+  assert.match(api, /@vercel\/blob/);
+  assert.match(api, /roi-leads\//);
   assert.match(api, /roi-leads\.jsonl/);
+  assert.match(exportApi, /ROI_LEADS_TOKEN/);
+  assert.match(exportApi, /format.*csv/s);
+  assert.match(exportApi, /roi-leads\//);
+  assert.match(packageJson, /"@vercel\/blob"/);
   assert.match(htaccess, /Require all denied/);
   assert.match(gitignore, /storage\/\*\.jsonl/);
 });

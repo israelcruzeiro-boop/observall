@@ -19,6 +19,7 @@
 - [x] Vídeo informado pelo usuário reproduzido dentro da área "Quem é a Observall?" quando servido por HTTP/HTTPS, com transição local de `file://` para o servidor de desenvolvimento na mesma aba.
 - [x] Calculadora de ROI atualizada conforme mockups e PDF: campos por cupons/ticket/margem/visitas, modal de lead antes do resultado e tela de payback/ROI anual.
 - [x] Ajuste visual da calculadora revisado: escala desktop ampliada, painel direito sem duplicação de estados e modal de lead em duas colunas conforme mockup.
+- [x] Modal de lead compactado para viewport real do Chrome e rota de exportação `/api/leads-export` adicionada para Vercel Blob.
 - [x] Captura inicial de leads preparada em arquivo: `lead-capture.php` grava em `storage/roi-leads.jsonl`, com `.htaccess` bloqueando leitura direta e servidor local simulando o mesmo endpoint.
 - [x] `npm.cmd run check` verde e `dist/` gerado.
 - [x] Smoke responsivo local em desktop/mobile sem overflow horizontal.
@@ -30,7 +31,7 @@
 ## Ambiente web
 
 **Progresso:** versão local pronta; `dist/` gerado.  
-**Validação:** 18/18 testes; build PASS; smoke desktop via inspeção de layout da calculadora; imagens 1672x941 carregam no hero, valor e plataforma; logos circulares carregam nos depoimentos; métricas reais dos insights renderizam; calculadora de ROI captura lead local e exibe resultado esperado do exemplo.
+**Validação:** 18/18 testes; build PASS; smoke desktop via inspeção de layout da calculadora; imagens 1672x941 carregam no hero, valor e plataforma; logos circulares carregam nos depoimentos; métricas reais dos insights renderizam; calculadora de ROI captura lead local e exibe resultado esperado do exemplo; exportação de leads protegida por token preparada para Vercel Blob.
 **Produção:** não alterada.
 
 ## Próximo passo

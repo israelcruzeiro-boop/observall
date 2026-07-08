@@ -2,6 +2,7 @@ import { appendFile, mkdir } from 'node:fs/promises';
 import { join } from 'node:path';
 import { tmpdir } from 'node:os';
 import crypto from 'node:crypto';
+import { put } from '@vercel/blob';
 
 const MAX_BODY_SIZE = 20000;
 
@@ -60,11 +61,22 @@ export default async function handler(request, response) {
       },
     };
 
-    const storageDir = join(tmpdir(), 'observall');
-    await mkdir(storageDir, { recursive: true });
-    await appendFile(join(storageDir, 'roi-leads.jsonl'), `${JSON.stringify(record)}\n`, 'utf8');
+    const line = `${JSON.stringify(record)}\n`;
+    let storage = 'temporary';
 
-    response.status(200).json({ ok: true });
+    try {
+      await put(`roi-leads/${record.createdAt.slice(0, 10)}/${record.id}.json`, JSON.stringify(record, null, 2), {
+        access: 'private',
+        contentType: 'application/json',
+      });
+      storage = 'blob';
+    } catch (error) {
+      const storageDir = join(tmpdir(), 'observall');
+      await mkdir(storageDir, { recursive: true });
+      await appendFile(join(storageDir, 'roi-leads.jsonl'), line, 'utf8');
+    }
+
+    response.status(200).json({ ok: true, storage });
   } catch (error) {
     response.status(400).json({ ok: false, error: 'invalid_payload' });
   }
