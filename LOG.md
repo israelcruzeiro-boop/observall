@@ -45,6 +45,13 @@
 - Mantido fallback temporário em `/tmp` apenas para não bloquear a visualização do resultado quando Blob ainda não estiver configurado.
 - Validação: `npm.cmd run check` PASS, 18/18 testes e build PASS.
 
+## 2026-07-08 — Remoção do fluxo HostGator do deploy atual
+
+- Removido fallback `lead-capture.php` do frontend; a captura de leads agora chama somente `/api/lead-capture`.
+- Removidos `lead-capture.php`, `storage/.htaccess` e cópias desses arquivos no build.
+- Substituído guia `DEPLOY_HOSTGATOR.md` por `DEPLOY_VERCEL.md`.
+- Atualizados testes para garantir que o fluxo atual de deploy é Vercel-only.
+
 ## 2026-06-22 — Reprodução do vídeo dentro do site
 
 - A capa do vídeo agora funciona como gatilho para carregar o player do YouTube no mesmo espaço da página.

@@ -218,28 +218,22 @@ function saveLeadFallback(payload) {
 }
 
 async function persistLead(payload) {
-  const endpoints = ['/api/lead-capture', 'lead-capture.php'];
+  try {
+    const response = await fetch('/api/lead-capture', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
 
-  for (const endpoint of endpoints) {
-    try {
-      const response = await fetch(endpoint, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
-      });
-
-      if (!response.ok) throw new Error(`Lead endpoint returned ${response.status}`);
-      const data = await response.json().catch(() => ({ ok: true }));
-      if (data.ok === false) throw new Error('Lead endpoint rejected the payload');
-      return true;
-    } catch (error) {
-      // Try the next endpoint. Vercel uses /api, HostGator uses PHP.
-    }
-  }
-
-  if (window.location.protocol === 'file:') {
-    saveLeadFallback(payload);
+    if (!response.ok) throw new Error(`Lead endpoint returned ${response.status}`);
+    const data = await response.json().catch(() => ({ ok: true }));
+    if (data.ok === false) throw new Error('Lead endpoint rejected the payload');
     return true;
+  } catch (error) {
+    if (window.location.protocol === 'file:') {
+      saveLeadFallback(payload);
+      return true;
+    }
   }
 
   return false;

@@ -20,12 +20,12 @@
 - [x] Calculadora de ROI atualizada conforme mockups e PDF: campos por cupons/ticket/margem/visitas, modal de lead antes do resultado e tela de payback/ROI anual.
 - [x] Ajuste visual da calculadora revisado: escala desktop ampliada, painel direito sem duplicação de estados e modal de lead em duas colunas conforme mockup.
 - [x] Modal de lead compactado para viewport real do Chrome e rota de exportação `/api/leads-export` adicionada para Vercel Blob.
-- [x] Captura inicial de leads preparada em arquivo: `lead-capture.php` grava em `storage/roi-leads.jsonl`, com `.htaccess` bloqueando leitura direta e servidor local simulando o mesmo endpoint.
+- [x] Captura de leads preparada para Vercel: `api/lead-capture.js` grava em Vercel Blob privado quando o Blob Store estiver conectado.
 - [x] `npm.cmd run check` verde e `dist/` gerado.
 - [x] Smoke responsivo local em desktop/mobile sem overflow horizontal.
 - [ ] Aprovação visual e editorial do usuário.
-- [ ] Deploy em HostGator.
-- [ ] Corte de DNS no Registro.br.
+- [ ] Merge do PR no GitHub para disparar deploy de produção na Vercel.
+- [ ] Conectar Blob Store privado e `ROI_LEADS_TOKEN` na Vercel.
 - [ ] Smoke pós-deploy e confirmação de SSL.
 
 ## Ambiente web

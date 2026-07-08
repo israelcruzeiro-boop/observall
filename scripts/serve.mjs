@@ -1,6 +1,4 @@
 import { createReadStream, existsSync } from 'node:fs';
-import { appendFile, mkdir } from 'node:fs/promises';
-import crypto from 'node:crypto';
 import { createServer } from 'node:http';
 import { extname, join, normalize } from 'node:path';
 
@@ -38,23 +36,8 @@ async function captureLead(request, response) {
       return;
     }
 
-    const record = {
-      id: crypto.randomUUID(),
-      source: 'observall-site-roi',
-      createdAt: new Date().toISOString(),
-      lead,
-      simulation: payload.simulation || {},
-      client: {
-        ipHash: '',
-        userAgent: String(request.headers['user-agent'] || '').slice(0, 240),
-      },
-    };
-
-    await mkdir(join(root, 'storage'), { recursive: true });
-    await appendFile(join(root, 'storage', 'roi-leads.jsonl'), `${JSON.stringify(record)}\n`, 'utf8');
-
     response.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' });
-    response.end(JSON.stringify({ ok: true }));
+    response.end(JSON.stringify({ ok: true, storage: 'local-dev' }));
   } catch (error) {
     response.writeHead(400, { 'Content-Type': 'application/json; charset=utf-8' });
     response.end(JSON.stringify({ ok: false, error: 'invalid_payload' }));
@@ -64,7 +47,7 @@ async function captureLead(request, response) {
 createServer((request, response) => {
   const requestPath = decodeURIComponent(request.url?.split('?')[0] || '/');
 
-  if (request.method === 'POST' && (requestPath === '/api/lead-capture' || requestPath === '/lead-capture.php')) {
+  if (request.method === 'POST' && requestPath === '/api/lead-capture') {
     captureLead(request, response);
     return;
   }

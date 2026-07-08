@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { spawn } from 'node:child_process';
-import { access, readFile, rm } from 'node:fs/promises';
+import { access, readFile } from 'node:fs/promises';
 import test from 'node:test';
 
 const read = (file) => readFile(new URL(`../${file}`, import.meta.url), 'utf8');
@@ -108,15 +108,13 @@ test('implementa a nova calculadora de ROI com captura de lead antes do resultad
   assert.match(js, /couponGrowth:\s*0\.1/);
   assert.match(js, /ticketGrowth:\s*0\.12/);
   assert.match(js, /\/api\/lead-capture/);
-  assert.match(js, /lead-capture\.php/);
+  assert.doesNotMatch(js, /lead-capture\.php/);
   assert.match(js, /Preencha todos os campos para calcular seu potencial de ganho/);
 });
 
-test('o endpoint local de leads grava uma linha JSONL pela rota Vercel', async () => {
+test('o endpoint local de leads responde pela rota Vercel', async () => {
   const port = 45000 + Math.floor(Math.random() * 1000);
   const cwd = new URL('../', import.meta.url);
-  const leadFile = new URL('../storage/roi-leads.jsonl', import.meta.url);
-  await rm(leadFile, { force: true });
 
   const server = spawn(process.execPath, ['scripts/serve.mjs'], {
     cwd,
@@ -158,43 +156,34 @@ test('o endpoint local de leads grava uma linha JSONL pela rota Vercel', async (
     });
 
     assert.equal(response.status, 200);
-    assert.deepEqual(await response.json(), { ok: true });
-
-    const lines = (await readFile(leadFile, 'utf8')).trim().split('\n');
-    const saved = JSON.parse(lines.at(-1));
-    assert.equal(saved.lead.nome, 'Lead Teste');
-    assert.equal(saved.simulation.receitaExtraMensal, 222720);
-    assert.equal(saved.source, 'observall-site-roi');
+    assert.deepEqual(await response.json(), { ok: true, storage: 'local-dev' });
   } finally {
     server.kill();
-    await rm(leadFile, { force: true });
   }
 });
 
-test('o build inclui endpoint PHP e proteção do arquivo de leads', async () => {
-  const [build, php, api, exportApi, htaccess, gitignore, packageJson] = await Promise.all([
+test('o build e as APIs usam somente o fluxo Vercel', async () => {
+  const [build, api, exportApi, gitignore, packageJson, readme, deployGuide] = await Promise.all([
     read('scripts/build.mjs'),
-    read('lead-capture.php'),
     read('api/lead-capture.js'),
     read('api/leads-export.js'),
-    read('storage/.htaccess'),
     read('.gitignore'),
     read('package.json'),
+    read('README.md'),
+    read('DEPLOY_VERCEL.md'),
   ]);
 
-  assert.match(build, /lead-capture\.php/);
-  assert.match(build, /storage\/\.htaccess/);
-  assert.match(php, /roi-leads\.jsonl/);
-  assert.match(php, /LOCK_EX/);
+  assert.doesNotMatch(build, /lead-capture\.php/);
+  assert.doesNotMatch(build, /storage/);
   assert.match(api, /@vercel\/blob/);
   assert.match(api, /roi-leads\//);
-  assert.match(api, /roi-leads\.jsonl/);
   assert.match(exportApi, /ROI_LEADS_TOKEN/);
   assert.match(exportApi, /format.*csv/s);
   assert.match(exportApi, /roi-leads\//);
   assert.match(packageJson, /"@vercel\/blob"/);
-  assert.match(htaccess, /Require all denied/);
-  assert.match(gitignore, /storage\/\*\.jsonl/);
+  assert.doesNotMatch(gitignore, /storage\/\*\.jsonl/);
+  assert.match(readme, /deploy na Vercel/i);
+  assert.match(deployGuide, /Deploy — Vercel/);
 });
 
 test('mantém proteção contra métricas comerciais sem fonte da referência', async () => {
