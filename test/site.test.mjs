@@ -179,6 +179,8 @@ test('o build e as APIs usam somente o fluxo Vercel', async () => {
   assert.match(api, /roi-leads\//);
   assert.match(exportApi, /ROI_LEADS_TOKEN/);
   assert.match(exportApi, /format.*csv/s);
+  assert.match(exportApi, /format.*json/s);
+  assert.match(exportApi, /text\/html/);
   assert.match(exportApi, /roi-leads\//);
   assert.match(packageJson, /"@vercel\/blob"/);
   assert.doesNotMatch(gitignore, /storage\/\*\.jsonl/);

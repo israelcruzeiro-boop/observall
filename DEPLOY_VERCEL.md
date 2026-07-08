@@ -19,8 +19,9 @@ Os leads são capturados por `api/lead-capture.js` e gravados no Vercel Blob qua
 
 Exportação protegida:
 
-- JSON: `https://observall.com.br/api/leads-export?token=SEU_TOKEN`
+- Tabela no navegador: `https://observall.com.br/api/leads-export?token=SEU_TOKEN`
 - CSV: `https://observall.com.br/api/leads-export?format=csv&token=SEU_TOKEN`
+- JSON: `https://observall.com.br/api/leads-export?format=json&token=SEU_TOKEN`
 
 `SEU_TOKEN` é o valor da variável de ambiente `ROI_LEADS_TOKEN`.
 

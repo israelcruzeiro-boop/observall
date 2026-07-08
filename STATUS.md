@@ -21,6 +21,7 @@
 - [x] Ajuste visual da calculadora revisado: escala desktop ampliada, painel direito sem duplicação de estados e modal de lead em duas colunas conforme mockup.
 - [x] Modal de lead compactado para viewport real do Chrome e rota de exportação `/api/leads-export` adicionada para Vercel Blob.
 - [x] Captura de leads preparada para Vercel: `api/lead-capture.js` grava em Vercel Blob privado quando o Blob Store estiver conectado.
+- [x] Exportação de leads ajustada para abrir tabela HTML no navegador, com CSV e JSON como opções.
 - [x] `npm.cmd run check` verde e `dist/` gerado.
 - [x] Smoke responsivo local em desktop/mobile sem overflow horizontal.
 - [ ] Aprovação visual e editorial do usuário.

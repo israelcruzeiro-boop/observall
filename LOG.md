@@ -1,5 +1,10 @@
 # Log
 
+## 2026-07-08 — Visualização amigável dos leads
+
+- A rota protegida `/api/leads-export` agora mostra uma tabela HTML por padrão, com botões para baixar CSV ou ver JSON.
+- Mantidos os formatos explícitos `format=csv` e `format=json` para exportação e integração.
+
 ## 2026-07-08 — Nova calculadora de ROI e captura de leads
 
 - Calculadora de ROI refeita conforme mockups e PDF: tela inicial com lojas, cupons/mês, ticket médio, margem e visitas por loja/mês; modal obrigatório de lead antes do resultado; tela final com payback, receita extra, lucro incremental, investimento Observall, ROI anual e ganho líquido anual.
