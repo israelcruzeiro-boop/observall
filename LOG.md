@@ -1,5 +1,71 @@
 # Log
 
+## 2026-07-17 — Score único a partir de três visões
+
+- Reposicionada a landing para que Auditor Profissional, Cliente Real e Operação Interna formem um único Score da Loja.
+- Criado o fluxo editorial “três visões → cruzamento → Score → plano de ação”; a IA passou a ser apresentada somente como camada posterior de interpretação e priorização.
+- Atualizados hero, módulos, plataforma ilustrativa, FAQ, SEO, navegação, rodapé e a nota da calculadora de ROI.
+- Gerado e integrado o asset próprio `public/assets/hero-score-tres-visoes-observall.png`, sem texto, logotipo ou claim embutido.
+- Protegidos os contratos com 21 testes; `npm.cmd run check` passou e o smoke local em 390, 768 e 1440 px não encontrou overflow horizontal. Menu mobile e modal de lead também foram exercitados.
+- Produção, DNS, credenciais e dados persistentes não foram acessados ou alterados.
+
+## 2026-07-08 — Visualização amigável dos leads
+
+- A rota protegida `/api/leads-export` agora mostra uma tabela HTML por padrão, com botões para baixar CSV ou ver JSON.
+- Mantidos os formatos explícitos `format=csv` e `format=json` para exportação e integração.
+
+## 2026-07-08 — Nova calculadora de ROI e captura de leads
+
+- Calculadora de ROI refeita conforme mockups e PDF: tela inicial com lojas, cupons/mês, ticket médio, margem e visitas por loja/mês; modal obrigatório de lead antes do resultado; tela final com payback, receita extra, lucro incremental, investimento Observall, ROI anual e ganho líquido anual.
+- Fórmulas aplicadas: R$ 300 por visita, +10% em cupons e +12% em ticket médio; payback calculado pelo investimento anual dividido pelo lucro incremental mensal.
+- Endpoint `lead-capture.php` adicionado para hospedagem com PHP/HostGator, gravando cada lead em `storage/roi-leads.jsonl` com `LOCK_EX`; `storage/.htaccess` bloqueia leitura direta do arquivo.
+- Servidor local `scripts/serve.mjs` passou a simular o mesmo POST de captura para smoke e testes, sem depender de produção.
+- Build atualizado para incluir `lead-capture.php` e `storage/.htaccess`, sem empacotar arquivos `.jsonl` locais.
+- Testes atualizados para proteger o novo contrato da calculadora, o endpoint de leads e a cópia segura no build.
+- Smoke responsivo: desktop e mobile validados no navegador interno; exemplo do PDF renderizou `R$ 222.720`, `R$ 44.544`, `R$ 3.600`, `1.137%` e payback de `1 mês`; sem rolagem horizontal prática no mobile.
+- Validação final: `npm.cmd run check` PASS, 18/18 testes e build PASS.
+- Produção, DNS e credenciais não foram acessados.
+
+## 2026-07-08 — Ajuste de fidelidade visual da calculadora de ROI
+
+- Corrigido o estado visual do painel direito: blocos com `hidden` agora recebem `display: none !important`, impedindo a sobreposição de cards iniciais e resultados.
+- Seção da calculadora ampliada para seguir o mockup desktop, com container de até 1304 px, duas colunas 50/50, tipografia maior no título e card principal com proporção mais próxima da referência.
+- Modal de captura reestruturado com duas colunas: formulário do lead à esquerda e painel "O que você vai desbloquear" à direita, incluindo quatro cards informativos.
+- Estado de resultado compactado para não ficar excessivamente alto e manter apenas os cards de resultado e CTAs esperados.
+- Validação: `npm.cmd run check` PASS, 18/18 testes e build PASS; `storage/` limpo, sem `roi-leads.jsonl` de teste.
+
+## 2026-07-08 — Pacote de deploy preparado
+
+- Executado `npm.cmd run check` com 18/18 testes PASS e build PASS.
+- Conferido `dist/`: contém `index.html`, `styles.css`, `script.js`, `video.js`, `lead-capture.php`, `public/` e `storage/.htaccess`; não contém `storage/roi-leads.jsonl`.
+- Primeiro ZIP gerado por `Compress-Archive` foi descartado por não incluir arquivos raiz.
+- Pacote final criado com `tar` a partir do conteúdo interno de `dist/`: `deploy/observall-site-20260708-110256.zip`.
+- Publicação em HostGator/cPanel ainda não executada por falta de `@CRED`/acesso confirmado e backup de produção.
+
+## 2026-07-08 — Preparação para deploy na Vercel
+
+- Confirmado `vercel.json` com `buildCommand: npm run build` e `outputDirectory: dist`.
+- Adicionada rota serverless `api/lead-capture.js` para compatibilidade com Vercel; o frontend tenta `/api/lead-capture` antes do fallback `lead-capture.php`.
+- Servidor local passou a aceitar `/api/lead-capture` e testes cobrem a rota compatível com Vercel.
+- Executado `npm.cmd run check`: 18/18 testes PASS e build PASS.
+- Bloqueio: CLI Vercel instalada, mas sem `.vercel/project.json`, sem `VERCEL_TOKEN` e sem sessão local detectável. Deploy externo não executado para evitar publicação no escopo/projeto errado.
+- Observação técnica: gravação em arquivo na Vercel via serverless usa filesystem temporário (`/tmp`) e não é persistente. Leads reais precisam de destino durável como Vercel Blob/KV, Supabase, Sheets/Airtable ou banco.
+
+## 2026-07-08 — Correção do modal e exportação de leads na Vercel
+
+- Modal de captura compactado com `max-height`, scroll interno e campos menores para caber no viewport real do Chrome sem exigir zoom.
+- Adicionado `@vercel/blob` e gravação persistente opcional em Blob privado quando a Vercel tiver Blob Store conectado ao projeto.
+- Adicionada rota protegida `api/leads-export.js` para exportar leads em JSON ou CSV usando `ROI_LEADS_TOKEN`.
+- Mantido fallback temporário em `/tmp` apenas para não bloquear a visualização do resultado quando Blob ainda não estiver configurado.
+- Validação: `npm.cmd run check` PASS, 18/18 testes e build PASS.
+
+## 2026-07-08 — Remoção do fluxo HostGator do deploy atual
+
+- Removido fallback `lead-capture.php` do frontend; a captura de leads agora chama somente `/api/lead-capture`.
+- Removidos `lead-capture.php`, `storage/.htaccess` e cópias desses arquivos no build.
+- Substituído guia `DEPLOY_HOSTGATOR.md` por `DEPLOY_VERCEL.md`.
+- Atualizados testes para garantir que o fluxo atual de deploy é Vercel-only.
+
 ## 2026-06-22 — Reprodução do vídeo dentro do site
 
 - A capa do vídeo agora funciona como gatilho para carregar o player do YouTube no mesmo espaço da página.

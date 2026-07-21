@@ -13,8 +13,45 @@ const types = {
   '.webp': 'image/webp',
 };
 
+async function readRequestBody(request, limit = 20000) {
+  let body = '';
+
+  for await (const chunk of request) {
+    body += chunk;
+    if (body.length > limit) throw new Error('request_too_large');
+  }
+
+  return body;
+}
+
+async function captureLead(request, response) {
+  try {
+    const body = await readRequestBody(request);
+    const payload = JSON.parse(body);
+    const lead = payload?.lead || {};
+
+    if (!lead.nome || !lead.empresa || !lead.whatsapp || !lead.email) {
+      response.writeHead(422, { 'Content-Type': 'application/json; charset=utf-8' });
+      response.end(JSON.stringify({ ok: false, error: 'missing_lead_fields' }));
+      return;
+    }
+
+    response.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' });
+    response.end(JSON.stringify({ ok: true, storage: 'local-dev' }));
+  } catch (error) {
+    response.writeHead(400, { 'Content-Type': 'application/json; charset=utf-8' });
+    response.end(JSON.stringify({ ok: false, error: 'invalid_payload' }));
+  }
+}
+
 createServer((request, response) => {
   const requestPath = decodeURIComponent(request.url?.split('?')[0] || '/');
+
+  if (request.method === 'POST' && requestPath === '/api/lead-capture') {
+    captureLead(request, response);
+    return;
+  }
+
   const requestedFile = requestPath === '/' ? 'index.html' : requestPath.replace(/^\/+/, '');
   const relative = requestedFile;
   const file = normalize(join(root, relative));

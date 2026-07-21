@@ -1,5 +1,23 @@
 # Decisões
 
+## ADR-003 — Score único como narrativa editorial
+
+**Status:** Aceito
+**Data:** 2026-07-17
+
+### Decisão
+
+Organizar a landing em torno de um Score da Loja formado por três visões canônicas: Auditor Profissional, Cliente Real e Operação Interna. A IA é apresentada depois do Score, como camada de interpretação e priorização.
+
+### Motivo
+
+O posicionamento aprovado privilegia proteção da marca, identificação de riscos e ação priorizada, em vez de vender módulos independentes.
+
+### Trade-offs
+
+- Fórmula, pesos e disponibilidade operacional não são declarados sem confirmação comercial.
+- O dashboard exibido é explicitamente ilustrativo e não representa acesso a dados em tempo real.
+
 ## ADR-001 — Site estático para HostGator
 
 **Status:** Aceito  
