@@ -1,5 +1,14 @@
 # Log
 
+## 2026-07-17 — Score único a partir de três visões
+
+- Reposicionada a landing para que Auditor Profissional, Cliente Real e Operação Interna formem um único Score da Loja.
+- Criado o fluxo editorial “três visões → cruzamento → Score → plano de ação”; a IA passou a ser apresentada somente como camada posterior de interpretação e priorização.
+- Atualizados hero, módulos, plataforma ilustrativa, FAQ, SEO, navegação, rodapé e a nota da calculadora de ROI.
+- Gerado e integrado o asset próprio `public/assets/hero-score-tres-visoes-observall.png`, sem texto, logotipo ou claim embutido.
+- Protegidos os contratos com 21 testes; `npm.cmd run check` passou e o smoke local em 390, 768 e 1440 px não encontrou overflow horizontal. Menu mobile e modal de lead também foram exercitados.
+- Produção, DNS, credenciais e dados persistentes não foram acessados ou alterados.
+
 ## 2026-07-08 — Visualização amigável dos leads
 
 - A rota protegida `/api/leads-export` agora mostra uma tabela HTML por padrão, com botões para baixar CSV ou ver JSON.

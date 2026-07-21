@@ -5,17 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Cliente Oculto, NPS com IA e inteligência para supermercados. A Observall transforma evidências em planos de ação para vender mais e padronizar sua operação."
+      content="A Observe+ cruza Auditor Profissional, Cliente Real e Operação Interna para formar o Score da Loja, revelar por que clientes não voltam e orientar planos de ação."
     />
     <meta name="theme-color" content="#25D670" />
-    <meta property="og:title" content="Observall — Cliente Oculto e Inteligência para Supermercados" />
+    <meta property="og:title" content="Observe+ — Descubra por que o cliente não volta" />
     <meta
       property="og:description"
-      content="Auditoria inteligente com evidências, dashboard em tempo real e plano de ação por loja e turno."
+      content="Três perspectivas complementares revelam falhas silenciosas, priorizam correções e transformam evidências em ação."
     />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://observall.com.br/" />
-    <title>Observall — Cliente Oculto e Inteligência para Supermercados</title>
+    <meta property="og:url" content="https://observemais.com.br/" />
+    <title>Observe+ — Score da Loja a partir de três visões</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -27,12 +27,55 @@
     <script src="video.js" defer></script>
   </head>
   <body>
+    <svg class="icon-sprite" aria-hidden="true" focusable="false">
+      <symbol id="icon-store" viewBox="0 0 24 24">
+        <path d="M3 10.5 5 4h14l2 6.5" />
+        <path d="M4 10.5a3 3 0 0 0 5 2.2 3 3 0 0 0 6 0 3 3 0 0 0 5-2.2" />
+        <path d="M5 12v8h14v-8M9 20v-5h6v5" />
+      </symbol>
+      <symbol id="icon-receipt" viewBox="0 0 24 24">
+        <path d="M6 3h12v18l-3-2-3 2-3-2-3 2V3Z" />
+        <path d="M9 8h6M9 12h6M9 16h4" />
+      </symbol>
+      <symbol id="icon-card" viewBox="0 0 24 24">
+        <rect x="3" y="5" width="18" height="14" rx="2" />
+        <path d="M3 10h18M7 15h3" />
+      </symbol>
+      <symbol id="icon-pie-chart" viewBox="0 0 24 24">
+        <path d="M12 3v9h9" />
+        <path d="M21 12a9 9 0 1 1-9-9" />
+      </symbol>
+      <symbol id="icon-eye" viewBox="0 0 24 24">
+        <path d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6Z" />
+        <circle cx="12" cy="12" r="2.5" />
+      </symbol>
+      <symbol id="icon-coins" viewBox="0 0 24 24">
+        <ellipse cx="12" cy="6" rx="7" ry="3" />
+        <path d="M5 6v5c0 1.7 3.1 3 7 3s7-1.3 7-3V6M5 11v5c0 1.7 3.1 3 7 3s7-1.3 7-3v-5" />
+      </symbol>
+      <symbol id="icon-trend" viewBox="0 0 24 24">
+        <path d="m3 16 6-6 4 4 8-8" />
+        <path d="M15 6h6v6" />
+      </symbol>
+      <symbol id="icon-clock" viewBox="0 0 24 24">
+        <path d="M4 12a8 8 0 1 0 2.2-5.5" />
+        <path d="M4 4v4h4M12 7v5l3 2" />
+      </symbol>
+      <symbol id="icon-chart" viewBox="0 0 24 24">
+        <path d="M4 20V4M4 20h16" />
+        <path d="M8 16v-4M12 16V8M16 16v-7" />
+      </symbol>
+      <symbol id="icon-wallet" viewBox="0 0 24 24">
+        <path d="M4 7.5A2.5 2.5 0 0 1 6.5 5H19v14H6.5A2.5 2.5 0 0 1 4 16.5v-9Z" />
+        <path d="M4 8h15M15 13h4" />
+      </symbol>
+    </svg>
     <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
 
     <header class="site-header" id="topo">
       <div class="container header-inner">
-        <a class="brand" href="#topo" aria-label="Observall — página inicial">
-          <img src="public/assets/logo-observall-transparente.png" alt="Observall" width="1731" height="908" />
+        <a class="brand" href="#topo" aria-label="Observe+ — página inicial">
+          <img class="brand-logo" src="public/assets/logo-observe-plus-light.png" alt="Observe+" width="1964" height="390" />
         </a>
 
         <button
@@ -46,7 +89,8 @@
         </button>
 
         <nav id="main-navigation" class="main-nav" aria-label="Navegação principal">
-          <a href="#solucoes">Quero contratar</a>
+          <a href="#solucoes">O Score</a>
+          <a href="#plataforma">Como funciona</a>
           <a href="#clientes">Cases de sucesso</a>
           <a href="#sobre">Quem somos</a>
           <a href="#faq">FAQ</a>
@@ -55,7 +99,7 @@
         <a class="button button-primary header-blog" href="#insights">Insights</a>
         <a
           class="button button-dark header-cta"
-          href="https://wa.me/5561993715292?text=Olá%2C%20quero%20avaliar%20minha%20empresa%20com%20a%20Observall."
+          href="https://wa.me/5561993715292?text=Olá%2C%20quero%20avaliar%20minha%20empresa%20com%20a%20Observe%2B."
           target="_blank"
           rel="noopener noreferrer"
         >Contato</a>
@@ -66,54 +110,51 @@
       <section class="hero" aria-labelledby="hero-title">
         <div class="container hero-grid">
           <div class="hero-copy reveal">
-            <h1 id="hero-title">Cliente Oculto para supermercados que querem vender mais.</h1>
-            <p class="hero-lead">Você compreende a experiência real do seu cliente?</p>
-            <p>
-              A Observall revela o que impede sua loja de atingir todo o potencial de vendas, com
-              evidências fotográficas, notas detalhadas e plano de ação claro por loja e turno.
-            </p>
+            <p class="hero-eyebrow">Diagnóstico integrado para operações multiunidade</p>
+            <h1 id="hero-title">Eu sou o cliente que nunca mais volta.</h1>
+            <p class="hero-lead">Quantos clientes passaram pelas suas lojas e tomaram essa mesma decisão?</p>
             <div class="hero-actions">
               <a
                 class="button button-dark"
-                href="https://wa.me/5561993715292?text=Olá%2C%20quero%20avaliar%20minha%20empresa%20com%20a%20Observall."
+                href="https://wa.me/5561993715292?text=Olá%2C%20quero%20descobrir%20por%20que%20meus%20clientes%20não%20voltam%20com%20a%20Observe%2B."
                 target="_blank"
                 rel="noopener noreferrer"
-              >Quero avaliar minha empresa</a>
-              <a class="button button-light" href="#solucoes">Conhecer soluções</a>
+              >Quero descobrir por que meus clientes não voltam</a>
             </div>
           </div>
 
-          <div class="hero-visual reveal" aria-label="Cliente oculto em supermercado">
+          <div class="hero-visual reveal" aria-label="Três perspectivas observando a mesma operação de supermercado e formando o Score da Loja">
             <img
-              src="public/assets/hero-supermercado-observall.png"
-              alt="Cliente oculto avaliando pontos de atendimento em supermercado com apoio da Observall"
+              src="public/assets/hero-score-tres-visoes-neon-observall.png"
+              alt="Supermercado com painéis neon de Auditor Profissional, Cliente Real, Operação Interna e Score da Loja"
               width="1672"
               height="941"
             />
-            <span>VEJA O INVISÍVEL</span>
+            <span class="hero-badge">3 VISÕES • 1 SCORE</span>
           </div>
         </div>
       </section>
 
-      <section class="metrics-strip" id="insights" aria-label="Insights Observall">
+      <section class="metrics-strip" id="insights" aria-labelledby="metrics-title">
+        <div class="container metrics-heading reveal">
+          <h2 id="metrics-title">Problemas encontrados antes de virarem <span>clientes perdidos</span></h2>
+        </div>
         <div class="container metrics-grid reveal">
           <article>
-            <span class="metric-icon" aria-hidden="true">01</span>
             <h3>+22 mil</h3>
-            <p>Itens auditados em loja</p>
-            <small>Base real de auditorias Observall</small>
+            <p>Momentos da experiência auditados em loja</p>
+            <small>Evidências reais para enxergar a operação além da rotina</small>
           </article>
           <article>
-            <span class="metric-icon" aria-hidden="true">02</span>
-            <h3>-69,6%</h3>
-            <p>Falhas em um item-chave</p>
-            <small>Redução observada após acompanhamento</small>
+            <span class="metric-label">Redução de</span>
+            <h3>69,6%</h3>
+            <p>Redução de uma falha crítica após acompanhamento</p>
+            <small>Correção acompanhada antes que o padrão se deteriorasse</small>
           </article>
           <article>
-            <span class="metric-icon" aria-hidden="true">03</span>
             <h3>+3 mil</h3>
-            <p>Oportunidades de melhoria identificadas</p>
-            <small>Insights convertidos em plano de ação</small>
+            <p>Oportunidades identificadas antes de virarem problemas maiores</p>
+            <small>Prioridades convertidas em plano de ação</small>
           </article>
         </div>
       </section>
@@ -121,22 +162,25 @@
       <section class="section value-section" aria-labelledby="value-title">
         <div class="container value-grid">
           <div class="value-copy reveal">
-            <h2 id="value-title">Transforme a experiência do cliente em <span>crescimento real</span> com nossos insights de Cliente Oculto</h2>
+            <p class="section-kicker">O silêncio que custa caro</p>
+            <h2 id="value-title">Ele não reclamou. <span>Só decidiu não voltar.</span></h2>
             <p>
-              A auditoria inteligente da Observall mostra exatamente o que corrigir para elevar a
-              experiência, reduzir perdas e aumentar a conversão em supermercados.
+              A maioria das empresas reage ao que consegue enxergar: reclamações, avaliações negativas e quedas no faturamento.
+            </p>
+            <p>
+              Mas o cliente perdido quase nunca avisa. Pequenas falhas no atendimento, na execução e na experiência se repetem todos os dias até que o consumidor simplesmente escolha outro lugar.
             </p>
             <a
               class="button button-primary"
-              href="https://wa.me/5561993715292?text=Quero%20entender%20como%20a%20Observall%20pode%20ajudar%20minha%20operação."
+              href="https://wa.me/5561993715292?text=Quero%20encontrar%20falhas%20que%20afastam%20clientes%20com%20a%20Observe%2B."
               target="_blank"
               rel="noopener noreferrer"
-            >Quero avaliar minha empresa</a>
+            >Encontrar falhas que afastam clientes</a>
           </div>
           <div class="value-media reveal">
             <img
               src="public/assets/insights-supermercado-observall.png"
-              alt="Gestor acompanhando resultados de cliente oculto em supermercado"
+              alt="Gestor acompanhando sinais da experiência do cliente em uma operação de supermercado"
               width="1672"
               height="941"
               loading="lazy"
@@ -148,73 +192,71 @@
       <section class="section solutions-section" id="solucoes" aria-labelledby="solutions-title">
         <div class="container">
           <div class="section-heading reveal">
-            <h2 id="solutions-title">Soluções para sua operação <span>vender mais</span> com dados</h2>
+            <p class="section-kicker">Como descobrimos o que a gestão não vê</p>
+            <h2 id="solutions-title">Para entender por que o cliente não volta, <span>precisamos enxergar a loja por três perspectivas.</span></h2>
+            <p>Nenhuma fonte isolada revela toda a realidade. A Observe+ cruza o que um profissional identifica, o que o cliente sente e o que a operação acredita estar entregando.</p>
           </div>
 
-          <div class="solutions-grid">
-            <article class="solution-card reveal">
-              <div class="card-icon" aria-hidden="true">↗</div>
-              <h3>Cliente Oculto</h3>
-              <p>Avaliamos atendimento, qualidade e processos de forma discreta, com evidências reais.</p>
-              <a href="#contato">Quero avaliar minha empresa <span>→</span></a>
+          <div class="solutions-grid score-modules">
+            <article class="solution-card reveal" data-score-module="auditor-profissional">
+              <div class="card-icon" aria-hidden="true">01</div>
+              <span class="module-role">O que o auditor enxerga</span>
+              <h3>O que o auditor enxerga</h3>
+              <p>Um profissional treinado percorre a jornada, identifica desvios e registra evidências que passam despercebidas na rotina.</p>
+              <a href="#plataforma">Ver como as visões se cruzam <span>→</span></a>
             </article>
-            <article class="solution-card reveal">
-              <div class="card-icon" aria-hidden="true">▦</div>
-              <h3>Auditoria operacional</h3>
-              <p>Checklists personalizados para medir a aderência aos padrões da sua marca.</p>
-              <a href="#contato">Quero avaliar minha empresa <span>→</span></a>
+            <article class="solution-card reveal" data-score-module="cliente-real">
+              <div class="card-icon" aria-hidden="true">02</div>
+              <span class="module-role">O que o cliente sente</span>
+              <h3>O que o cliente sente</h3>
+              <p>NPS, relatos e avaliações revelam onde a experiência gera confiança ou faz o consumidor considerar outra empresa.</p>
+              <a href="#plataforma">Ver como as visões se cruzam <span>→</span></a>
             </article>
-            <article class="solution-card reveal">
-              <div class="card-icon" aria-hidden="true">⌕</div>
-              <h3>Dashboard em tempo real</h3>
-              <p>Notas, conformidade, pontos críticos e evolução organizados para decisões rápidas.</p>
-              <a href="#plataforma">Quero avaliar minha empresa <span>→</span></a>
-            </article>
-            <article class="solution-card reveal">
-              <div class="card-icon" aria-hidden="true">☰</div>
-              <h3>NPS com IA</h3>
-              <p>Feedback estruturado, respostas inteligentes e promotores conectados ao Google.</p>
-              <a href="#faq">Quero avaliar minha empresa <span>→</span></a>
-            </article>
-            <article class="solution-card reveal">
-              <div class="card-icon" aria-hidden="true">★</div>
-              <h3>Plano de ação</h3>
-              <p>Falhas priorizadas com orientação clara para responsáveis, lojas e turnos.</p>
-              <a href="#resultados">Quero avaliar minha empresa <span>→</span></a>
-            </article>
-            <article class="solution-card reveal">
-              <div class="card-icon" aria-hidden="true">●●</div>
-              <h3>Melhoria contínua</h3>
-              <p>Ciclos periódicos de avaliação para manter padrão e acompanhar evolução.</p>
-              <a href="#clientes">Quero avaliar minha empresa <span>→</span></a>
+            <article class="solution-card reveal" data-score-module="operacao-interna">
+              <div class="card-icon" aria-hidden="true">03</div>
+              <span class="module-role">O que a operação executa</span>
+              <h3>O que a operação executa</h3>
+              <p>Checklists e a leitura da liderança mostram como padrões, processos e rotinas estão sendo cumpridos em cada unidade.</p>
+              <a href="#plataforma">Ver como as visões se cruzam <span>→</span></a>
             </article>
           </div>
+
+          <div class="score-flow reveal" data-score-flow aria-label="Como as três visões formam o Score">
+            <article data-score-step="tres-visoes"><span>01</span><strong>Três visões</strong><p>Dados externos, percepção real e leitura interna.</p></article>
+            <i aria-hidden="true">→</i>
+            <article data-score-step="cruzamento"><span>02</span><strong>Cruzamento</strong><p>Convergências e divergências ficam visíveis.</p></article>
+            <i aria-hidden="true">→</i>
+            <article class="score-flow__result" data-score-step="score"><span>03</span><strong>Score da Loja</strong><p>Um diagnóstico comparável para priorizar riscos.</p></article>
+            <i aria-hidden="true">→</i>
+            <article data-score-step="plano-de-acao"><span>04</span><strong>Plano de ação</strong><p>Responsáveis e prioridades para orientar a correção.</p></article>
+          </div>
+
+          <aside class="score-ai reveal" aria-label="Camada de Inteligência Artificial">
+            <span class="score-ai__mark" aria-hidden="true">IA</span>
+            <div><p class="section-kicker">Depois do diagnóstico</p><h3>Inteligência Artificial para interpretar e priorizar</h3><p>A IA apoia a leitura do Score, recomenda prioridades e pode sugerir treinamentos. Ela não substitui as três visões e não é um quarto módulo.</p></div>
+          </aside>
         </div>
       </section>
 
       <section class="section platform-section" id="plataforma" aria-labelledby="platform-title">
         <div class="container platform-grid">
           <div class="platform-copy reveal">
-            <h2 id="platform-title">Acesse <span>relatórios em tempo real</span> na nossa plataforma.</h2>
+            <p class="section-kicker">Do silêncio à decisão</p>
+            <h2 id="platform-title">Pare de tentar adivinhar <span>por que o cliente foi embora.</span></h2>
             <p>
-              Entenda o que impacta vendas e acompanhe evidências, notas e evolução por loja e turno
-              em uma visão simples para agir com rapidez.
+              O Observe+ Score transforma diferentes evidências em uma leitura comparável da operação.
+              Assim, a liderança identifica quais lojas precisam de atenção, quais falhas estão se repetindo e o que deve ser corrigido primeiro.
             </p>
+            <p class="platform-disclaimer">A composição ao lado é uma visão ilustrativa da metodologia. A disponibilidade de cada recurso deve ser confirmada na proposta comercial.</p>
             <a
               class="button button-primary"
-              href="https://wa.me/5561993715292?text=Quero%20ver%20a%20plataforma%20da%20Observall."
+              href="https://wa.me/5561993715292?text=Quero%20conhecer%20o%20Score%20da%20minha%20operação%20com%20a%20Observe%2B."
               target="_blank"
               rel="noopener noreferrer"
-            >Quero avaliar minha empresa</a>
+            >Quero conhecer o Score da minha operação</a>
           </div>
-          <div class="platform-media reveal">
-            <img
-              src="public/assets/plataforma-relatorios-observall.png"
-              alt="Dashboard da Observall com notas por seção e alertas em tempo real"
-              width="1672"
-              height="941"
-              loading="lazy"
-            />
+          <div class="platform-media reveal" aria-label="Visão ilustrativa da plataforma Observe+">
+            <img src="public/assets/plataforma-relatorios-observall.png" alt="Visão ilustrativa de relatórios da plataforma com score, notas por seção e prioridades" width="1672" height="941" loading="lazy" />
           </div>
         </div>
       </section>
@@ -222,8 +264,8 @@
       <section class="section clients-section" id="clientes" aria-labelledby="clients-title">
         <div class="container">
           <div class="section-heading reveal">
-            <h2 id="clients-title">Eles já <span>confiam em nós</span></h2>
-            <p>Projetos de cliente oculto, NPS e auditoria aplicados em operações reais.</p>
+            <h2 id="clients-title">Empresas que decidiram enxergar <span>o que o cliente não dizia</span></h2>
+            <p>A Observe+ já acompanha operações reais para identificar falhas, proteger padrões e transformar evidências em planos de ação.</p>
           </div>
 
           <div class="client-carousel-shell reveal">
@@ -253,7 +295,7 @@
 
           <a
             class="button button-primary clients-cta reveal"
-            href="https://wa.me/5561993715292?text=Quero%20conhecer%20os%20resultados%20da%20Observall."
+            href="https://wa.me/5561993715292?text=Quero%20conhecer%20os%20resultados%20da%20Observe%2B."
             target="_blank"
             rel="noopener noreferrer"
           >Conhecer resultados</a>
@@ -275,7 +317,7 @@
         </article>
         <article class="testimonial-card reveal">
           <img class="testimonial-logo" src="public/assets/clients/tecnotica.png" alt="Tecnótica" width="611" height="736" loading="lazy" />
-          <blockquote>“A Observall transformou informação da linha de frente em direcionamento para gestão.”</blockquote>
+          <blockquote>“A Observe+ transformou informação da linha de frente em direcionamento para gestão.”</blockquote>
           <footer><strong>Márcia Matos</strong><span>Tecnótica</span></footer>
           <div class="stars" aria-label="5 de 5 estrelas">★★★★★</div>
         </article>
@@ -284,21 +326,22 @@
       <section class="section about-section" id="sobre" aria-labelledby="about-title">
         <div class="container about-grid">
           <div class="about-copy reveal">
-            <h2 id="about-title">Quem é a <span>Observall?</span></h2>
+            <h2 id="about-title">Somos especialistas em descobrir <span>por que o cliente não volta.</span></h2>
             <p>
-              A Observall atua com cliente oculto, auditoria de experiência, NPS e inteligência
-              operacional para transformar dados reais em melhoria contínua.
+              A Observe+ transforma diferentes pontos de vista sobre uma mesma operação em um diagnóstico integrado.
             </p>
             <p>
-              Nossa metodologia combina visitas de cliente oculto, roteiros personalizados, evidências
-              fotográficas e dashboard em tempo real para que gestores saibam exatamente onde agir.
+              Unimos a visão do Auditor Profissional, a experiência do Cliente Real e a leitura da Operação Interna para revelar divergências, proteger o padrão da marca e orientar decisões.
+            </p>
+            <p>
+              Não avaliamos apenas se a loja parece funcionar. Mostramos onde a experiência está falhando e o que precisa ser corrigido primeiro.
             </p>
           </div>
           <div class="about-video reveal" data-youtube-video="yuGAr_NQis8">
             <button
               class="about-video-trigger"
               type="button"
-              aria-label="Reproduzir o vídeo da Observall nesta página"
+              aria-label="Reproduzir o vídeo da Observe+ nesta página"
             >
               <img
                 src="public/assets/video-observall-youtube.jpg"
@@ -317,47 +360,48 @@
       <section class="section results-section" id="resultados" aria-labelledby="results-title">
         <div class="container">
           <div class="section-heading roi-heading reveal">
-            <h2 id="results-title">Descubra em quantos meses a Observall pode <span>se pagar na sua operação</span></h2>
-            <p id="roi-subtitle">Simule o impacto financeiro de melhorar padrão de loja, experiência do cliente, atendimento, exposição e execução operacional.</p>
+            <p class="section-kicker">O resultado financeiro vem depois do diagnóstico</p>
+            <h2 id="results-title">Quanto custa o cliente <span>que nunca mais volta?</span></h2>
+            <p id="roi-subtitle">Simule o impacto financeiro de pequenas falhas que fazem consumidores desistirem de comprar novamente.</p>
           </div>
 
           <div class="calculator-layout reveal" data-roi-state="form">
             <form class="roi-form" id="roi-form">
               <div class="form-heading"><span>Simulador de ROI</span><h3 id="roi-form-title">Preencha os dados da sua operação</h3><p>Veja o potencial estimado de ganho e em quanto tempo o investimento pode se pagar.</p></div>
               <div class="field-grid roi-fields">
-                <label><span class="field-icon" aria-hidden="true">L</span><span>Quantidade de lojas</span><input id="stores" name="stores" type="text" value="12" inputmode="numeric" autocomplete="off" /></label>
-                <label><span class="field-icon" aria-hidden="true">C</span><span>Cupons por mês</span><input id="coupons" name="coupons" type="text" value="12.000" inputmode="numeric" autocomplete="off" /></label>
-                <label><span class="field-icon" aria-hidden="true">T</span><span>Ticket médio atual</span><input id="ticket" name="ticket" type="text" value="R$ 80" inputmode="decimal" autocomplete="off" /></label>
-                <label><span class="field-icon" aria-hidden="true">%</span><span>Margem de lucro média</span><input id="margin" name="margin" type="text" value="20%" inputmode="decimal" autocomplete="off" /></label>
-                <label><span class="field-icon" aria-hidden="true">V</span><span>Visitas ocultas por loja / mês</span><input id="visits" name="visits" type="text" value="1" inputmode="numeric" autocomplete="off" /></label>
+                <label><svg class="field-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><use href="#icon-store" /></svg><span>Quantidade de lojas</span><input id="stores" name="stores" type="text" value="12" inputmode="numeric" autocomplete="off" /></label>
+                <label><svg class="field-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><use href="#icon-receipt" /></svg><span>Cupons por mês</span><input id="coupons" name="coupons" type="text" value="12.000" inputmode="numeric" autocomplete="off" /></label>
+                <label><svg class="field-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><use href="#icon-card" /></svg><span>Ticket médio atual</span><input id="ticket" name="ticket" type="text" value="R$ 80" inputmode="decimal" autocomplete="off" /></label>
+                <label><svg class="field-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><use href="#icon-pie-chart" /></svg><span>Margem de lucro média</span><input id="margin" name="margin" type="text" value="20%" inputmode="decimal" autocomplete="off" /></label>
+                <label><svg class="field-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><use href="#icon-eye" /></svg><span>Visitas ocultas por loja / mês</span><input id="visits" name="visits" type="text" value="1" inputmode="numeric" autocomplete="off" /></label>
               </div>
-              <p class="roi-note"><span aria-hidden="true">i</span> A simulação considera um potencial estimado de <strong>+10%</strong> em cupons por mês e <strong>+12%</strong> em ticket médio.</p>
+              <p class="roi-note"><span aria-hidden="true">i</span><span class="roi-note__copy">Esta é uma <strong>simulação ilustrativa</strong>: considera as hipóteses de <strong>+10%</strong> em cupons por mês e <strong>+12%</strong> em ticket médio, sem representar garantia de resultado.</span></p>
               <div class="form-actions"><button class="button button-primary" id="roi-primary-action" type="submit">Calcular meu potencial de ganho</button><button class="button button-ghost" id="roi-example" type="button">Ver exemplo</button></div>
               <p class="form-error" id="form-error" role="alert" hidden></p>
             </form>
 
             <aside class="roi-output" aria-live="polite">
               <span class="output-kicker" id="roi-output-kicker">O que você vai descobrir</span>
-              <h3 id="roi-output-title">Quanto dinheiro sua operação pode estar deixando na mesa</h3>
+              <h3 id="roi-output-title">Descubra quanto dinheiro sua operação pode estar perdendo com clientes que não retornam</h3>
               <div class="roi-preview-list" id="roi-preview-list">
-                <div><span class="result-icon" aria-hidden="true">$</span><strong>Receita extra estimada por mês</strong></div>
-                <div><span class="result-icon" aria-hidden="true">%</span><strong>Lucro incremental mensal</strong></div>
-                <div><span class="result-icon" aria-hidden="true">P</span><strong>Payback do investimento</strong></div>
-                <div><span class="result-icon" aria-hidden="true">R</span><strong>ROI anual estimado</strong></div>
+                <div><svg class="result-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><use href="#icon-coins" /></svg><strong>Receita extra estimada por mês</strong></div>
+                <div><svg class="result-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><use href="#icon-trend" /></svg><strong>Lucro incremental mensal</strong></div>
+                <div><svg class="result-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><use href="#icon-clock" /></svg><strong>Payback do investimento</strong></div>
+                <div><svg class="result-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><use href="#icon-chart" /></svg><strong>ROI anual estimado</strong></div>
               </div>
               <div class="roi-result-panel" id="roi-result-panel" hidden>
-                <div class="result-highlight"><span class="result-icon" aria-hidden="true">P</span><strong id="payback-value">Payback estimado: —</strong></div>
-                <div class="result-row"><span><span class="result-icon" aria-hidden="true">$</span>Receita extra estimada / mês</span><strong id="extra-revenue">—</strong></div>
-                <div class="result-row"><span><span class="result-icon" aria-hidden="true">%</span>Lucro incremental / mês</span><strong id="incremental-profit">—</strong></div>
-                <div class="result-row"><span><span class="result-icon" aria-hidden="true">I</span>Investimento Observall / mês</span><strong id="monthly-investment">—</strong></div>
-                <div class="result-row"><span><span class="result-icon" aria-hidden="true">R</span>ROI anual estimado</span><strong id="roi-value">—</strong></div>
-                <div class="result-row"><span><span class="result-icon" aria-hidden="true">G</span>Ganho líquido anual estimado</span><strong id="annual-net-gain">—</strong></div>
+                <div class="result-highlight"><svg class="result-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><use href="#icon-clock" /></svg><strong id="payback-value">Payback estimado: —</strong></div>
+                <div class="result-row"><span><svg class="result-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><use href="#icon-coins" /></svg>Receita extra estimada / mês</span><strong id="extra-revenue">—</strong></div>
+                <div class="result-row"><span><svg class="result-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><use href="#icon-trend" /></svg>Lucro incremental / mês</span><strong id="incremental-profit">—</strong></div>
+                <div class="result-row"><span><svg class="result-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><use href="#icon-card" /></svg>Investimento Observe+ / mês</span><strong id="monthly-investment">—</strong></div>
+                <div class="result-row"><span><svg class="result-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><use href="#icon-chart" /></svg>ROI anual estimado</span><strong id="roi-value">—</strong></div>
+                <div class="result-row"><span><svg class="result-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><use href="#icon-wallet" /></svg>Ganho líquido anual estimado</span><strong id="annual-net-gain">—</strong></div>
               </div>
-              <p id="roi-commercial-copy">Pequenas falhas em atendimento, fila, ruptura, exposição e padrão de loja derrubam venda todos os dias. A Observall ajuda a transformar essas perdas invisíveis em plano de ação e resultado.</p>
-              <blockquote id="roi-impact-quote">A Observall não entra como custo. <strong>Entra como mecanismo para recuperar lucro perdido na operação.</strong></blockquote>
+              <p id="roi-commercial-copy">Pequenas falhas em atendimento, fila, ruptura, exposição e padrão de loja derrubam venda todos os dias. A Observe+ ajuda a transformar essas perdas invisíveis em plano de ação e resultado.</p>
+              <blockquote id="roi-impact-quote">A Observe+ não entra como custo. <strong>Entra como mecanismo para recuperar lucro perdido na operação.</strong></blockquote>
               <div class="roi-result-actions" id="roi-result-actions" hidden>
-                <a class="button button-primary" id="roi-whatsapp-primary" href="https://wa.me/5561993715292?text=Ol%C3%A1%2C%20fiz%20a%20simula%C3%A7%C3%A3o%20de%20ROI%20no%20site%20da%20Observall%20e%20quero%20validar%20os%20n%C3%BAmeros%20da%20minha%20opera%C3%A7%C3%A3o%20com%20um%20especialista." target="_blank" rel="noopener noreferrer">Quero validar esse ROI com a Observall</a>
-                <a class="button button-light" href="https://wa.me/5561993715292?text=Ol%C3%A1%2C%20quero%20falar%20com%20um%20especialista%20da%20Observall." target="_blank" rel="noopener noreferrer">Falar com especialista</a>
+                <a class="button button-primary" id="roi-whatsapp-primary" href="https://wa.me/5561993715292?text=Ol%C3%A1%2C%20fiz%20a%20simula%C3%A7%C3%A3o%20de%20ROI%20no%20site%20da%20Observe%2B%20e%20quero%20validar%20os%20n%C3%BAmeros%20da%20minha%20opera%C3%A7%C3%A3o%20com%20um%20especialista." target="_blank" rel="noopener noreferrer">Quero validar esse ROI com a Observe+</a>
+                <a class="button button-light" href="https://wa.me/5561993715292?text=Ol%C3%A1%2C%20quero%20falar%20com%20um%20especialista%20da%20Observe%2B." target="_blank" rel="noopener noreferrer">Falar com especialista</a>
               </div>
             </aside>
           </div>
@@ -382,42 +426,58 @@
             <p class="form-error" id="lead-error" role="alert" hidden></p>
             <button class="button button-primary" type="submit">Ver meu resultado</button>
             <button class="button button-ghost lead-back" type="button" data-modal-close>Voltar</button>
-            <small>Ao continuar, você concorda em receber sua simulação e contato da equipe Observall.</small>
+            <small>Ao continuar, você concorda em receber sua simulação e contato da equipe Observe+.</small>
           </div>
           <div class="lead-modal__aside" aria-label="O que você vai desbloquear">
             <h3>O que você vai desbloquear</h3>
-            <div><span class="field-icon" aria-hidden="true">P</span><strong>Payback estimado</strong><small>do investimento</small></div>
-            <div><span class="field-icon" aria-hidden="true">$</span><strong>Receita extra</strong><small>estimada por mês</small></div>
-            <div><span class="field-icon" aria-hidden="true">%</span><strong>Lucro incremental</strong><small>mensal</small></div>
-            <div><span class="field-icon" aria-hidden="true">R</span><strong>ROI anual</strong><small>estimado</small></div>
+            <div><svg class="field-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><use href="#icon-clock" /></svg><strong>Payback estimado</strong><small>do investimento</small></div>
+            <div><svg class="field-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><use href="#icon-coins" /></svg><strong>Receita extra</strong><small>estimada por mês</small></div>
+            <div><svg class="field-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><use href="#icon-trend" /></svg><strong>Lucro incremental</strong><small>mensal</small></div>
+            <div><svg class="field-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><use href="#icon-chart" /></svg><strong>ROI anual</strong><small>estimado</small></div>
           </div>
         </form>
       </div>
 
       <section class="section faq-section" id="faq" aria-labelledby="faq-title">
         <div class="container">
-          <h2 id="faq-title" class="reveal">Faq - Dúvidas Frequentes</h2>
+          <h2 id="faq-title" class="reveal">FAQ — Dúvidas Frequentes</h2>
           <div class="faq-list reveal">
-            <details><summary>Como faço para contratar a Observall?<span>+</span></summary><p>Entre em contato pelo WhatsApp, compartilhe o objetivo da operação e montamos um roteiro inicial para avaliar unidades, setores e frequência.</p></details>
-            <details><summary>Por que confiar na Observall?<span>+</span></summary><p>Porque a metodologia combina visitas discretas, evidências objetivas, dashboard e acompanhamento para que a decisão seja baseada em fatos observáveis.</p></details>
-            <details><summary>O que é Cliente Oculto?<span>+</span></summary><p>É uma avaliação em que uma pessoa treinada vive a jornada do cliente real e registra pontos de atenção sem alterar a rotina da loja.</p></details>
-            <details><summary>Quais setores podem se beneficiar do Cliente Oculto?<span>+</span></summary><p>Supermercados, varejo, restaurantes, hotelaria e operações correlatas com jornada e atendimento ao cliente.</p></details>
+            <details><summary>Como faço para contratar a Observe+?<span>+</span></summary><p>Entre em contato pelo WhatsApp, compartilhe o objetivo da operação e montamos um roteiro inicial para avaliar unidades, setores e frequência.</p></details>
+            <details><summary>O que compõe o Score?<span>+</span></summary><p>O Score reúne três perspectivas complementares: Auditor Profissional, Cliente Real e Operação Interna. A composição permite enxergar o que cada visão isolada deixaria passar.</p></details>
+            <details><summary>Como as três visões são cruzadas?<span>+</span></summary><p>As evidências, percepções e checklists são organizados para destacar convergências e divergências. A fórmula e os pesos dependem da metodologia aprovada para cada operação e não são inventados nesta apresentação.</p></details>
+            <details><summary>A IA é um quarto módulo?<span>+</span></summary><p>Não. A IA entra depois do diagnóstico para apoiar interpretação, priorização e recomendações. As três fontes que formam o Score continuam sendo humanas e operacionais.</p></details>
+            <details><summary>Como os dados dos clientes são protegidos?<span>+</span></summary><p>O site coleta somente os dados necessários para contato e simulação. A exportação de leads exige autorização por token e o armazenamento configurado para produção é privado.</p></details>
+            <details><summary>Quais operações podem usar a metodologia?<span>+</span></summary><p>Supermercados, varejo, restaurantes, hotelaria e outras redes que precisem comparar unidades, proteger padrão e melhorar a jornada do cliente.</p></details>
           </div>
+        </div>
+      </section>
+
+      <section class="section final-cta-section" aria-labelledby="final-cta-title">
+        <div class="container final-cta reveal">
+          <h2 id="final-cta-title">Quantos clientes deixaram de voltar <span>sem dizer o motivo?</span></h2>
+          <p>Descubra as falhas que sua operação ainda não está enxergando e transforme evidências em prioridades claras de ação.</p>
+          <a
+            class="button button-dark"
+            href="https://wa.me/5561993715292?text=Quero%20descobrir%20por%20que%20meus%20clientes%20não%20voltam%20com%20a%20Observe%2B."
+            target="_blank"
+            rel="noopener noreferrer"
+          >Quero descobrir por que meus clientes não voltam</a>
+          <small>Diagnóstico indicado para redes, franquias e operações com múltiplas unidades.</small>
         </div>
       </section>
     </main>
 
     <footer class="site-footer">
       <div class="container footer-grid">
-        <div class="footer-brand"><img src="public/assets/logo-observall-transparente.png" alt="Observall" width="1731" height="908" /><p>Cliente Oculto • auditoria de experiência • dados que viram ação.</p></div>
-        <div><strong>Soluções</strong><a href="#solucoes">Cliente Oculto</a><a href="#plataforma">Dashboard</a><a href="#resultados">ROI</a></div>
+        <div class="footer-brand"><img class="footer-logo" src="public/assets/logo-observe-plus-dark.png" alt="Observe+" width="1868" height="371" /><p>Três visões • um Score • prioridades que viram ação.</p></div>
+        <div><strong>O Score</strong><a href="#solucoes">Três visões</a><a href="#plataforma">Como funciona</a><a href="#resultados">Simulador ilustrativo</a></div>
         <div><strong>Conteúdo</strong><a href="#clientes">Cases</a><a href="#sobre">Quem somos</a><a href="#faq">FAQ</a></div>
-        <div id="contato"><strong>Contato</strong><a href="mailto:contato@observall.com.br">contato@observall.com.br</a><a href="https://wa.me/5561993715292" target="_blank" rel="noopener noreferrer">WhatsApp</a><a href="https://www.instagram.com/observall" target="_blank" rel="noopener noreferrer">Instagram</a><a href="https://www.youtube.com/@Observall" target="_blank" rel="noopener noreferrer">YouTube</a></div>
+        <div id="contato"><strong>Contato</strong><a href="mailto:contato@observemais.com.br">contato@observemais.com.br</a><a href="https://wa.me/5561993715292" target="_blank" rel="noopener noreferrer">WhatsApp</a><a href="https://www.instagram.com/observall" target="_blank" rel="noopener noreferrer">Instagram</a><a href="https://www.youtube.com/@Observall" target="_blank" rel="noopener noreferrer">YouTube</a></div>
       </div>
-      <div class="container footer-bottom"><span>© <span id="current-year">2026</span> Observall. Todos os direitos reservados.</span><a href="#topo">Voltar ao topo ↑</a></div>
+      <div class="container footer-bottom"><span>© <span id="current-year">2026</span> Observe+. Todos os direitos reservados.</span><a href="#topo">Voltar ao topo ↑</a></div>
     </footer>
 
-    <a class="whatsapp-float" href="https://wa.me/5561999555580?text=Olá%2C%20vim%20pelo%20site%20da%20Observall." target="_blank" rel="noopener noreferrer" aria-label="Conversar com a Observall no WhatsApp pelo número +55 61 99955-5580" title="WhatsApp: +55 61 99955-5580">
+    <a class="whatsapp-float" href="https://wa.me/5561999555580?text=Olá%2C%20vim%20pelo%20site%20da%20Observe%2B." target="_blank" rel="noopener noreferrer" aria-label="Conversar com a Observe+ no WhatsApp pelo número +55 61 99955-5580" title="WhatsApp: +55 61 99955-5580">
       <svg class="whatsapp-icon" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
         <path d="M16.01 3.2A12.63 12.63 0 0 0 5.1 22.2L3.5 28.8l6.76-1.58a12.62 12.62 0 0 0 5.75 1.38h.01A12.7 12.7 0 0 0 28.8 15.95 12.73 12.73 0 0 0 16.01 3.2Zm0 22.98h-.01a10.24 10.24 0 0 1-5.2-1.42l-.38-.23-4.02.94.96-3.92-.25-.4A10.2 10.2 0 1 1 26.38 16 10.36 10.36 0 0 1 16.01 26.18Zm5.6-7.63c-.31-.15-1.82-.9-2.1-1-.28-.11-.48-.15-.69.15-.2.31-.79 1-.97 1.2-.18.2-.36.23-.67.08-.31-.15-1.3-.48-2.48-1.53a9.3 9.3 0 0 1-1.72-2.14c-.18-.31-.02-.48.14-.63.14-.14.31-.36.46-.54.15-.18.2-.31.31-.51.1-.2.05-.38-.03-.54-.08-.15-.69-1.66-.94-2.27-.25-.6-.5-.52-.69-.53h-.59c-.2 0-.54.08-.82.38-.28.31-1.07 1.05-1.07 2.56s1.1 2.97 1.25 3.17c.15.2 2.16 3.3 5.24 4.63.73.32 1.3.51 1.75.65.74.23 1.41.2 1.94.12.59-.09 1.82-.74 2.08-1.45.26-.72.26-1.33.18-1.45-.08-.13-.28-.2-.59-.34Z" />
       </svg>

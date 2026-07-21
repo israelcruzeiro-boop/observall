@@ -5,24 +5,57 @@ import test from 'node:test';
 
 const read = (file) => readFile(new URL(`../${file}`, import.meta.url), 'utf8');
 
-test('a landing menor preserva o sentido comercial da Observall', async () => {
+test('a landing apresenta o Score como resposta ao cliente que não volta', async () => {
   const html = await read('index.html');
 
-  assert.match(html, /Cliente Oculto para supermercados/i);
-  assert.match(html, /Cliente Oculto/i);
-  assert.match(html, /vender mais/i);
-  assert.match(html, /Dashboard em tempo real/i);
-  assert.match(html, /NPS com IA/i);
-  assert.match(html, /Quem é a[\s\S]*Observall/i);
-  assert.match(html, /Faq - Dúvidas Frequentes/i);
+  assert.match(html, /Eu sou o cliente que nunca mais volta/i);
+  assert.match(html, /Quantos clientes passaram pelas suas lojas e tomaram essa mesma decisão/i);
+  assert.match(html, /A Observe\+ cruza o que um profissional identifica, o que o cliente sente e o que a operação acredita estar entregando/i);
+  assert.match(html, /Quero descobrir por que meus clientes não voltam/i);
+  assert.match(html, /Ele não reclamou[\s\S]*Só decidiu não voltar/i);
+  assert.match(html, /proteger[\s\S]*marca/i);
+  assert.match(html, /Auditor Profissional/i);
+  assert.match(html, /Cliente Real/i);
+  assert.match(html, /Operação Interna/i);
+  assert.match(html, /Score da Loja/i);
+  assert.match(html, /Somos especialistas em descobrir[\s\S]*por que o cliente não volta/i);
+  assert.match(html, /Dúvidas Frequentes/i);
   assert.match(html, /wa\.me\/5561993715292/);
 });
 
-test('usa o novo logo informado pelo usuário', async () => {
+test('modela exatamente três módulos que convergem para o Score e deixa a IA depois dele', async () => {
+  const html = await read('index.html');
+  const modules = [...html.matchAll(/<article[^>]+data-score-module="([^"]+)"/g)].map((match) => match[1]);
+  const flowSteps = [...html.matchAll(/data-score-step="([^"]+)"/g)].map((match) => match[1]);
+
+  assert.deepEqual(modules, ['auditor-profissional', 'cliente-real', 'operacao-interna']);
+  assert.deepEqual(flowSteps, ['tres-visoes', 'cruzamento', 'score', 'plano-de-acao']);
+  assert.match(html, /data-score-flow/);
+  assert.match(html, /class="score-ai[^"]*"[\s\S]*Inteligência Artificial/i);
+  assert.doesNotMatch(html, /data-score-module="ia"/i);
+});
+
+test('mantém linguagem segura para Opinii, Score e a simulação de ROI', async () => {
+  const [html, css, js] = await Promise.all([read('index.html'), read('styles.css'), read('script.js')]);
+  const productSource = `${html}\n${css}\n${js}`;
+
+  assert.doesNotMatch(productSource, /Alpine/i);
+  assert.doesNotMatch(html, /fórmula do Score|peso(?:s)? do Score/i);
+  assert.match(html, /simulação ilustrativa/i);
+  assert.match(html, /O que compõe o Score/i);
+  assert.match(html, /Como as três visões são cruzadas/i);
+  assert.match(html, /Como os dados dos clientes são protegidos/i);
+});
+
+test('usa a nova logo Observe+ enviada pelo usuário', async () => {
   const html = await read('index.html');
 
-  assert.match(html, /public\/assets\/logo-observall-transparente\.png/);
-  await access(new URL('../public/assets/logo-observall-transparente.png', import.meta.url));
+  assert.match(html, /public\/assets\/logo-observe-plus-light\.png/);
+  assert.match(html, /public\/assets\/logo-observe-plus-dark\.png/);
+  assert.doesNotMatch(html, /alt="Observall"/);
+  await access(new URL('../public/assets/logo-observe-plus-light.png', import.meta.url));
+  await access(new URL('../public/assets/logo-observe-plus-dark.png', import.meta.url));
+  await access(new URL('../public/assets/logo-observe-plus-icon.png', import.meta.url));
 });
 
 test('não incorpora marca, URLs ou copies específicas da referência de terceiros', async () => {
@@ -50,6 +83,7 @@ test('aproxima a sequência da referência seção por seção', async () => {
     'id="sobre"',
     'id="resultados"',
     'id="faq"',
+    'class="section final-cta-section"',
   ];
 
   let previous = -1;
@@ -110,6 +144,21 @@ test('implementa a nova calculadora de ROI com captura de lead antes do resultad
   assert.match(js, /\/api\/lead-capture/);
   assert.doesNotMatch(js, /lead-capture\.php/);
   assert.match(js, /Preencha todos os campos para calcular seu potencial de ganho/);
+});
+
+test('substitui abreviações do simulador por ícones e atualiza a métrica de redução', async () => {
+  const [html, css] = await Promise.all([read('index.html'), read('styles.css')]);
+
+  for (const icon of ['icon-store', 'icon-receipt', 'icon-card', 'icon-pie-chart', 'icon-eye', 'icon-coins', 'icon-trend', 'icon-clock', 'icon-chart', 'icon-wallet']) {
+    assert.match(html, new RegExp(`id="${icon}"`));
+  }
+
+  assert.doesNotMatch(html, /class="metric-icon"/);
+  assert.doesNotMatch(html, /<span class="(?:field-icon|result-icon)" aria-hidden="true">[LCT%VPRGI$]<\/span>/);
+  assert.match(html, /class="metric-label">Redução de<\/span>\s*<h3>69,6%<\/h3>/);
+  assert.doesNotMatch(html, /-69,6%/);
+  assert.match(css, /\.metric-label\s*\{[^}]*color:\s*var\(--green\)/s);
+  assert.match(css, /\.field-icon,\s*\.result-icon\s*\{[^}]*stroke:\s*currentColor/s);
 });
 
 test('o endpoint local de leads responde pela rota Vercel', async () => {
@@ -199,11 +248,12 @@ test('mantém proteção contra métricas comerciais sem fonte da referência', 
   assert.doesNotMatch(html, /\+\s*5000\b/i);
   assert.doesNotMatch(html, /Dado fictício até Gabriel enviar os insights/i);
   assert.match(html, /\+22 mil/);
-  assert.match(html, /Itens auditados em loja/);
-  assert.match(html, /-69,6%/);
-  assert.match(html, /Falhas em um item-chave/);
+  assert.match(html, /Momentos da experiência auditados em loja/);
+  assert.match(html, /Redução de/);
+  assert.match(html, /69,6%/);
+  assert.match(html, /Redução de uma falha crítica após acompanhamento/);
   assert.match(html, /\+3 mil/);
-  assert.match(html, /Oportunidades de melhoria identificadas/);
+  assert.match(html, /Oportunidades identificadas antes de virarem problemas maiores/);
 });
 
 test('a identidade troca o laranja da referência por verde sem introduzir laranja no CSS', async () => {
@@ -233,10 +283,11 @@ test('usa assets próprios e não imagens da referência', async () => {
   const html = await read('index.html');
 
   for (const asset of [
-    'public/assets/logo-observall-transparente.png',
-    'public/assets/hero-supermercado-observall.png',
-    'public/assets/insights-supermercado-observall.png',
+    'public/assets/logo-observe-plus-light.png',
+    'public/assets/logo-observe-plus-dark.png',
+    'public/assets/hero-score-tres-visoes-neon-observall.png',
     'public/assets/plataforma-relatorios-observall.png',
+    'public/assets/insights-supermercado-observall.png',
     'public/assets/video-observall-youtube.jpg',
   ]) {
     assert.match(html, new RegExp(asset.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')));
@@ -248,7 +299,7 @@ test('exibe carrossel de clientes da Observall', async () => {
   const [html, css, js] = await Promise.all([read('index.html'), read('styles.css'), read('script.js')]);
 
   assert.match(html, /id="clientes"/);
-  assert.match(html, /Eles já <span>confiam em nós<\/span>/);
+  assert.match(html, /Empresas que decidiram enxergar <span>o que o cliente não dizia<\/span>/);
   assert.match(html, /aria-label="Logos de clientes"/);
 
   for (const logo of ['goldko', 'ultrabox', 'derela', 'bigbox', 'nativas', 'tecnotica', 'lojas-mel']) {

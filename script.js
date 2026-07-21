@@ -264,7 +264,7 @@ function renderResult(input, result) {
   calculatorLayout?.setAttribute('data-roi-state', 'result');
   setFormReadOnly(true);
 
-  if (roiTitle) roiTitle.innerHTML = `Seu investimento com a Observall pode <span>se pagar em ${result.paybackLabel}</span>`;
+  if (roiTitle) roiTitle.innerHTML = `Seu investimento com a Observe+ pode <span>se pagar em ${result.paybackLabel}</span>`;
   if (roiSubtitle) {
     roiSubtitle.textContent = 'Com base nos dados informados, sua operação tem potencial para gerar receita adicional e lucro incremental com mais padrão, execução e experiência em loja.';
   }
@@ -287,7 +287,7 @@ function renderResult(input, result) {
   document.querySelector('#annual-net-gain').textContent = currency.format(result.annualNetGain);
 
   if (roiCommercialCopy) {
-    roiCommercialCopy.textContent = 'Isso significa que a Observall não entra como custo, mas como um mecanismo para recuperar lucro perdido na operação e acelerar resultado com mais padrão e execução em loja.';
+    roiCommercialCopy.textContent = 'Isso significa que a Observe+ não entra como custo, mas como um mecanismo para recuperar lucro perdido na operação e acelerar resultado com mais padrão e execução em loja.';
   }
   if (roiImpactQuote) {
     roiImpactQuote.innerHTML = 'O problema não é investir em cliente oculto. <strong>O problema é continuar perdendo venda por falhas que ninguém está medindo.</strong>';
@@ -299,13 +299,13 @@ function resetResults() {
   calculatorLayout?.setAttribute('data-roi-state', 'form');
   setFormReadOnly(false);
 
-  if (roiTitle) roiTitle.innerHTML = 'Descubra em quantos meses a Observall pode <span>se pagar na sua operação</span>';
+  if (roiTitle) roiTitle.innerHTML = 'Quanto custa o cliente <span>que nunca mais volta?</span>';
   if (roiSubtitle) {
-    roiSubtitle.textContent = 'Simule o impacto financeiro de melhorar padrão de loja, experiência do cliente, atendimento, exposição e execução operacional.';
+    roiSubtitle.textContent = 'Simule o impacto financeiro de pequenas falhas que fazem consumidores desistirem de comprar novamente.';
   }
   if (roiFormTitle) roiFormTitle.textContent = 'Preencha os dados da sua operação';
   if (roiOutputKicker) roiOutputKicker.textContent = 'O que você vai descobrir';
-  if (roiOutputTitle) roiOutputTitle.textContent = 'Quanto dinheiro sua operação pode estar deixando na mesa';
+  if (roiOutputTitle) roiOutputTitle.textContent = 'Descubra quanto dinheiro sua operação pode estar perdendo com clientes que não retornam';
   if (roiPrimaryAction) {
     roiPrimaryAction.textContent = 'Calcular meu potencial de ganho';
     roiPrimaryAction.type = 'submit';
@@ -314,10 +314,10 @@ function resetResults() {
   if (roiResultPanel) roiResultPanel.hidden = true;
   if (roiResultActions) roiResultActions.hidden = true;
   if (roiCommercialCopy) {
-    roiCommercialCopy.textContent = 'Pequenas falhas em atendimento, fila, ruptura, exposição e padrão de loja derrubam venda todos os dias. A Observall ajuda a transformar essas perdas invisíveis em plano de ação e resultado.';
+    roiCommercialCopy.textContent = 'Pequenas falhas em atendimento, fila, ruptura, exposição e padrão de loja derrubam venda todos os dias. A Observe+ ajuda a transformar essas perdas invisíveis em plano de ação e resultado.';
   }
   if (roiImpactQuote) {
-    roiImpactQuote.innerHTML = 'A Observall não entra como custo. <strong>Entra como mecanismo para recuperar lucro perdido na operação.</strong>';
+    roiImpactQuote.innerHTML = 'A Observe+ não entra como custo. <strong>Entra como mecanismo para recuperar lucro perdido na operação.</strong>';
   }
   clearError(errorMessage);
 }
